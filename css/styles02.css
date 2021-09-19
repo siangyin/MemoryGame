@@ -18,18 +18,18 @@ body {
 }
 
 .box-2 {
-	flex: 2;
+	flex: 3;
 	order: 2;
 	display: inline-flex;
 	flex-wrap: wrap;
 }
 
 div {
-	background-color: aqua;
+	background-color: #fffaa0;
 	height: 75px;
 	width: 75px;
 	margin: 5px;
-	border: 5px solid white;
+	border: 5px solid #9fcafb;
 }
 
 footer {
@@ -39,7 +39,7 @@ footer {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: pink;
-	color: white;
+	background-color: #ffd2de;
+	color: #ae45fc;
 	justify-content: center;
 }

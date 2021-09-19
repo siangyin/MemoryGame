@@ -4,7 +4,7 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	font-family: "Fredoka One", cursive;
-	font-size: x-large;
+	font-size: 220%;
 }
 
 #logo,
@@ -23,4 +23,5 @@ div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	color: #ff84da;
 }
