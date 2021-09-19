@@ -3,17 +3,24 @@ body {
 	background-repeat: no-repeat, repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	font-family: "Acme", sans-serif;
+	font-family: "Fredoka One", cursive;
+	font-size: x-large;
 }
 
-form {
-	display: flexbox;
-}
-
-#logo {
-	max-width: 70%;
+#logo,
+img {
+	max-width: 80%;
 	height: auto;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 0%;
+	margin-bottom: 0%;
+}
+
+p,
+div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
