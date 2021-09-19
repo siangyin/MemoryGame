@@ -1,0 +1,7 @@
+body {
+	background-image: url("../images/bkgrimg1.jpg");
+	background-repeat: no-repeat, repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: "Acme", sans-serif;
+}

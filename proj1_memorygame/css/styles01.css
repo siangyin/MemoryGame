@@ -1,0 +1,19 @@
+body {
+	background-image: url("../images/bkgrimg2.jpg");
+	background-repeat: no-repeat, repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: "Acme", sans-serif;
+}
+
+form {
+	display: flexbox;
+}
+
+#logo {
+	max-width: 70%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
