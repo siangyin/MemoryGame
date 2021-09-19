@@ -4,4 +4,42 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	font-family: "Acme", sans-serif;
+	color: white;
+	text-align: center;
+}
+
+.container {
+	display: inline-flex;
+}
+
+.box-1 {
+	flex: 1;
+	order: 1;
+}
+
+.box-2 {
+	flex: 2;
+	order: 2;
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+
+div {
+	background-color: aqua;
+	height: 75px;
+	width: 75px;
+	margin: 5px;
+	border: 5px solid white;
+}
+
+footer {
+	flex-direction: row;
+	flex: 3;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: pink;
+	color: white;
+	justify-content: center;
 }
