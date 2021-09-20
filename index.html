@@ -19,12 +19,16 @@
 			font-family: 'Fredoka One', cursive;
 			 -->
 	</head>
-	<body class="box">
+	<body>
 		<img id="logo" src="images/logo01.png" alt="game logo" />
 
-		<a href="./main.html"
-			><img id="playbtn" src="./images/playbutton.png" alt="playbutton"
-		/></a>
+		<form class="center">
+			<label for="playername">Player name:</label><br />
+			<input type="text" id="playername" name="playername" /><br />
+		</form>
+		<a href="./main.html" onclick="getPlayerName()">
+			<img id="playbtn" src="./images/playbutton.png" alt="playbutton" />
+		</a>
 
 		<!--
 		<form>
@@ -71,6 +75,6 @@
 		</form> 
 		-->
 
-		<script src=""></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>

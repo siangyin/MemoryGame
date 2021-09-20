@@ -1,3 +1,12 @@
+/** main javascript **/
+
+// function to get player name input
+let playername;
+function getPlayerName() {
+	const playername = document.getElementById("playername").value;
+	console.log(playername);
+}
+
 // shuffle array function
 const shuffleArray = (array) => {
 	for (let i = array.length - 1; i > 0; i--) {

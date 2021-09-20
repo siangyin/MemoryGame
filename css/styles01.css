@@ -4,7 +4,22 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	font-family: "Fredoka One", cursive;
-	font-size: 220%;
+	font-size: 180%;
+	color: #fda4e2;
+}
+
+.center {
+	margin: auto;
+	width: max-content;
+	height: 150px;
+	text-align: center;
+}
+
+input {
+	border: #fda4e2 solid 5px;
+	height: 50px;
+	width: 500px;
+	margin: 10px;
 }
 
 #playbtn {
