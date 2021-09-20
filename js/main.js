@@ -1,5 +1,3 @@
-console.log("hi");
-
 // shuffle array function
 const shuffleArray = (array) => {
 	for (let i = array.length - 1; i > 0; i--) {
@@ -12,9 +10,9 @@ const shuffleArray = (array) => {
 };
 
 const randArr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-shuffleArray(randArr1);
-console.log(randArr1);
+const randArr2 = [...randArr1, ...randArr1];
+shuffleArray(randArr2);
+console.log(randArr2);
 
 function addCards(num) {
 	for (let i = 0; i < num; i++) {
@@ -26,4 +24,4 @@ function addCards(num) {
 	}
 }
 
-addCards(60);
+addCards(40);
