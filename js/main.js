@@ -86,8 +86,10 @@ addCards(gameLvl[player.currentlvl].cards);
 // document.getElementById("1").firstChild.style.visibility = "visible";
 
 /*** DOM events ***/
-// function alerthere() {
-// 	alert("Clicked!");
-// }
-// let btn = document.getElementsByTagName("html");
-// btn.addEventListener("click", alerthere);
+function alerthere() {
+	alert("Clicked!");
+}
+document.getElementByClass("cards").addEventListener("click", function (event) {
+	alert("Submit button is clicked!");
+	event.preventDefault();
+});
