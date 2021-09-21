@@ -1,14 +1,16 @@
 /*** >> Function to get player name input ***/
+
 let playername;
 function getPlayerName() {
 	const playername = document.getElementById("playername").value;
 	console.log(playername);
 }
 
-/***__Functions: >>-f->> randCardsArr (the no. of unique pairs) return random integer (0 to 80) for random cardID into an array >>-f->> randId() then >>-f->> dblCardsArr(arr) duplicate each card in given array and >>-f->> shuffleArray(arr)shuffle the cards e.g:randCardsArr(2):[5, 59, 5, 59]__***/
+/***__Functions: >>-f->> randCardsArr (the no. of unique pairs) return random integer (cards80: 0 to 79) for random cardID into an array >>-f->> randId() then >>-f->> dblCardsArr(arr) duplicate each card in given array and >>-f->> shuffleArray(arr)shuffle the cards e.g:randCardsArr(2):[5, 59, 5, 59]__***/
+
 function randCardsArr(num) {
 	const randId = () => {
-		return Math.floor(Math.random() * 81);
+		return Math.floor(Math.random() * 80);
 	};
 	let array = [];
 	do {
@@ -37,18 +39,26 @@ function randCardsArr(num) {
 /*** Function: Generate Cards in <div id=id# class = cards> >>-f->> addCards(no. of card) appending into HTML page  ***/
 
 function addCards(num) {
+	currLvlCardsArr = randCardsArr(gameLvl[player.currentlvl].cards / 2);
 	for (let i = 0; i < num; i++) {
-		let newDivChild = document.createElement("div");
+		let newDiv = document.createElement("div");
+		let image = new Image();
+
 		document
 			.getElementById("cardbox")
-			.appendChild(newDivChild)
+			.appendChild(newDiv)
 			.setAttribute("id", i);
+
 		let docId = document.getElementById(i);
-		docId.setAttribute("class", "cards");
+		docId.className = "cards";
+
+		image.src = "../images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
+		image.setAttribute("img", currLvlCardsArr[i]);
+		docId.appendChild(image).className = "hide-cutie";
 	}
 }
 
-/*** Objects for Games level structures & player ***/
+/*** Data Objects for Games level structures & player ***/
 
 const player = { currentlvl: 1, coins: 100, matches: 0, turns: 0 };
 
@@ -69,4 +79,15 @@ const gameLvl = {
 	5: { level: "Level 5", cards: 40, pairs: 20, time: 90 },
 };
 
+let currLvlCardsArr;
+
 addCards(gameLvl[player.currentlvl].cards);
+
+// document.getElementById("1").firstChild.style.visibility = "visible";
+
+/*** DOM events ***/
+// function alerthere() {
+// 	alert("Clicked!");
+// }
+// let btn = document.getElementsByTagName("html");
+// btn.addEventListener("click", alerthere);

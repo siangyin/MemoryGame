@@ -26,8 +26,8 @@ body {
 
 div {
 	background-color: #fffaa0;
-	height: 100px;
-	width: 100px;
+	height: 200px;
+	width: 200px;
 	margin: 5px;
 	border: 5px solid #9fcafb;
 }
@@ -42,4 +42,10 @@ footer {
 	background-color: #ffd2de;
 	color: #ae45fc;
 	justify-content: center;
+}
+
+img.hide-cutie {
+	max-width: 100%;
+	height: auto;
+	visibility: visible;
 }
