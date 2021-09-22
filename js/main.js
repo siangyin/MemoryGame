@@ -6,11 +6,11 @@ function getPlayerName() {
 	console.log(playername);
 }
 
-/***__Functions: >>-f->> randCardsArr (the no. of unique pairs) return random integer (cards80: 0 to 79) for random cardID into an array >>-f->> randId() then >>-f->> dblCardsArr(arr) duplicate each card in given array and >>-f->> shuffleArray(arr)shuffle the cards e.g:randCardsArr(2):[5, 59, 5, 59]__***/
+/***__Functions: >>-f->> randCardsArr (the no. of unique pairs) return random integer (cards100: 0 to 99) for random cardID into an array >>-f->> randId() then >>-f->> dblCardsArr(arr) duplicate each card in given array and >>-f->> shuffleArray(arr)shuffle the cards e.g:randCardsArr(2):[5, 59, 5, 59]__***/
 
 function randCardsArr(num) {
 	const randId = () => {
-		return Math.floor(Math.random() * 80);
+		return Math.floor(Math.random() * 100);
 	};
 	let array = [];
 	do {
@@ -89,4 +89,10 @@ addCards(gameLvl[player.currentlvl].cards);
 function gotalert() {
 	alert("Clicked!");
 }
-document.getElementsByTagName("html").addEventListener("click", gotalert);
+
+const cardbox = document.getElementById("cardbox");
+cardbox.addEventListener("click", (e) => {
+	let imgClicked = e.path[0];
+	let img = imgClicked.getAttribute("img");
+	console.log(img);
+});
