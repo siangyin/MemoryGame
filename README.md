@@ -2,4 +2,4 @@
 
 ### Mermory Games (in-progess)
 
-The Pages site (https://siangyin.github.io/p1-memorygame/index.html)
+The Pages site (https://siangyin.github.io/memorygame/index.html)
