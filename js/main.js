@@ -58,6 +58,12 @@ function addCards(num) {
 	}
 }
 
+/*** Function: Check cards img  ***/
+
+const checkCards = (num1, num2) => {
+	return 0;
+};
+
 /*** Data Objects for Games level structures & player ***/
 
 const player = { currentlvl: 1, coins: 100, matches: 0, turns: 0 };
@@ -92,7 +98,10 @@ function gotalert() {
 
 const cardbox = document.getElementById("cardbox");
 cardbox.addEventListener("click", (e) => {
-	let imgClicked = e.path[0];
-	let img = imgClicked.getAttribute("img");
+	let imgClicked = e;
+	let img = e.target.getAttribute("img");
+	console.log(imgClicked);
+	console.log(e.target);
 	console.log(img);
+	console.log(e.target);
 });
