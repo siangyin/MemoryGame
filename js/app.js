@@ -136,7 +136,8 @@ cardbox.addEventListener("click", (e) => {
 	let imgClicked = e.target.firstChild;
 	imgClicked.classList.toggle("hide");
 	// imgClicked.classList.toggle();
-	console.log(e.target.firstChild);
+	console.log(e.target);
+	console.log(imgClicked);
 });
 
-/*** Data Objects for Games level structures & player ***/
+/***   ***/
