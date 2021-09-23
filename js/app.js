@@ -73,6 +73,7 @@ class User {
 		this.coins = 100;
 		this.complete = 0;
 		this.moves = 0;
+		this.sound = true;
 	}
 
 	addCoins(num) {
