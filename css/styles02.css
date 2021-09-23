@@ -53,8 +53,13 @@ footer {
 	justify-content: center;
 }
 
-img.hide-cutie {
+img.hide {
 	max-width: 100%;
 	height: auto;
-	visibility: visible;
+	visibility: hidden;
+}
+
+img.cutie {
+	max-width: 100%;
+	height: auto;
 }

@@ -6,11 +6,11 @@ function getPlayerName() {
 	console.log(playername);
 }
 
-/***__Functions: >>-f->> randCardsArr (the no. of unique pairs) return random integer (cards100: 0 to 99) for random cardID into an array >>-f->> randId() then >>-f->> dblCardsArr(arr) duplicate each card in given array and >>-f->> shuffleArray(arr)shuffle the cards e.g:randCardsArr(2):[5, 59, 5, 59]__***/
+/***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
 
 function randCardsArr(num) {
 	const randId = () => {
-		return Math.floor(Math.random() * 100);
+		return Math.floor(Math.random() * 162);
 	};
 	let array = [];
 	do {
@@ -36,7 +36,7 @@ function randCardsArr(num) {
 	return dblCardsArr(array);
 }
 
-/*** Function: Generate Cards in <div id=id# class = cards> >>-f->> addCards(no. of card) appending into HTML page  ***/
+/*** Function: Generate Cards in <div id=id# class = cards> >>-f->> addCards(cards no.) appending into HTML page  ***/
 
 function addCards(num) {
 	currLvlCardsArr = randCardsArr(gameLvl[player.currentlvl].cards / 2);
@@ -54,7 +54,7 @@ function addCards(num) {
 
 		image.src = "../images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
 		image.setAttribute("img", currLvlCardsArr[i]);
-		docId.appendChild(image).className = "hide-cutie";
+		docId.appendChild(image).className = "hide cutie";
 	}
 }
 
@@ -66,16 +66,36 @@ const checkCards = (num1, num2) => {
 
 /*** Data Objects for Games level structures & player ***/
 
-const player = { currentlvl: 1, coins: 100, matches: 0, turns: 0 };
-
-const createLvlObj = class {
-	constructor(level, cards, time) {
-		this.level = "Level " + level;
-		this.cards = cards;
-		this.pairs = cards / 2;
-		this.time = time;
+class User {
+	constructor(name) {
+		this.name = name;
+		this.currentlvl = 1;
+		this.coins = 100;
+		this.complete = 0;
+		this.moves = 0;
 	}
-};
+
+	addCoins(num) {
+		this.coins += num;
+	}
+	deductCoins(num) {
+		this.coins -= num;
+	}
+
+	addMoves() {
+		this.moves++;
+	}
+
+	addComplete() {
+		this.complete++;
+	}
+
+	nextLevel() {
+		this.currentlvl++;
+	}
+}
+
+const player = new User("lee");
 
 const gameLvl = {
 	1: { level: "Level 1", cards: 8, pairs: 4, time: 60 },
@@ -97,11 +117,26 @@ function gotalert() {
 }
 
 const cardbox = document.getElementById("cardbox");
+// cardbox.addEventListener("click", (e) => {
+// 	let imgClicked = e;
+// 	let img = e.target.getAttribute("img");
+// 	console.log(imgClicked);
+// 	console.log(e.target);
+// 	console.log(img);
+// 	console.log(e.target);
+// });
+
+/*** Function: toggle cards hide or show  ***/
+// const cards
+// function toggleCards() {
+//  if ()
+// }
+
 cardbox.addEventListener("click", (e) => {
-	let imgClicked = e;
-	let img = e.target.getAttribute("img");
-	console.log(imgClicked);
-	console.log(e.target);
-	console.log(img);
-	console.log(e.target);
+	let imgClicked = e.target.firstChild;
+	imgClicked.classList.toggle("hide");
+	// imgClicked.classList.toggle();
+	console.log(e.target.firstChild);
 });
+
+/*** Data Objects for Games level structures & player ***/
