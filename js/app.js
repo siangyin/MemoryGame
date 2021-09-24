@@ -33,9 +33,13 @@ class User {
 	}
 
 	nextLevel() {
+		this.coins += gameLvl[this.currentlvl].bonus;
+		coinsTxt.textContent = this.coins;
 		this.currentlvl++;
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
+		currLvlCardsArr = [];
 		addCards(gameLvl[this.currentlvl].cards);
+		this.coins += gameLvl[this.currentlvl].cards;
 	}
 }
 
@@ -43,9 +47,10 @@ class User {
 const gameLvl = {
 	1: {
 		level: "Level 1",
-		cards: 20,
-		pairs: 10,
+		cards: 16,
+		pairs: 8,
 		time: 60,
+		speed: 1600,
 		earning: 50,
 		damages: 10,
 		bonus: 250,
@@ -55,6 +60,7 @@ const gameLvl = {
 		cards: 30,
 		pairs: 15,
 		time: 60,
+		speed: 1500,
 		earning: 75,
 		damages: 30,
 		bonus: 500,
@@ -64,6 +70,7 @@ const gameLvl = {
 		cards: 40,
 		pairs: 20,
 		time: 90,
+		speed: 1300,
 		earning: 100,
 		damages: 60,
 		bonus: 1000,
@@ -73,6 +80,7 @@ const gameLvl = {
 		cards: 50,
 		pairs: 25,
 		time: 90,
+		speed: 1200,
 		earning: 150,
 		damages: 120,
 		bonus: 2500,
@@ -82,6 +90,7 @@ const gameLvl = {
 		cards: 60,
 		pairs: 30,
 		time: 90,
+		speed: 1000,
 		earning: 200,
 		damages: 200,
 		bonus: 5000,
@@ -192,7 +201,7 @@ cardbox.addEventListener("click", (e) => {
 		if (cardsImgClicked.length === 2) {
 			check2Cards();
 		}
-	}, 1500);
+	}, gameLvl[player.currentlvl].speed);
 });
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
