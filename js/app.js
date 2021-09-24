@@ -11,6 +11,7 @@ class User {
 		this.complete = 0;
 		this.moves = 0;
 		this.sound = true;
+		this.gamerecord = {};
 	}
 
 	addCoins(num) {
@@ -32,14 +33,26 @@ class User {
 		achievementTxt.textContent = this.complete;
 	}
 
-	nextLevel() {
+	completeALevel() {
+		console.log(
+			`Good Job, you have complete this level ${this.currentlvl} in ${timeTxt.textContent}`
+		);
+		this.gamerecord[this.currentlvl] = timeTxt.textContent;
+		removeAllChilds(cardbox);
+		currLvlCardsArr = [];
 		this.coins += gameLvl[this.currentlvl].bonus;
 		coinsTxt.textContent = this.coins;
 		this.currentlvl++;
+	}
+
+	nextLevel() {
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
-		currLvlCardsArr = [];
 		addCards(gameLvl[this.currentlvl].cards);
 		this.coins += gameLvl[this.currentlvl].cards;
+		this.moves = 0;
+		movesTxt.textContent = this.moves;
+		this.complete = 0;
+		achievementTxt.textContent = this.complete;
 	}
 }
 
@@ -47,10 +60,10 @@ class User {
 const gameLvl = {
 	1: {
 		level: "Level 1",
-		cards: 16,
-		pairs: 8,
+		cards: 10,
+		pairs: 5,
 		time: 60,
-		speed: 1600,
+		speed: 1500,
 		earning: 50,
 		damages: 10,
 		bonus: 250,
@@ -60,7 +73,7 @@ const gameLvl = {
 		cards: 30,
 		pairs: 15,
 		time: 60,
-		speed: 1500,
+		speed: 1400,
 		earning: 75,
 		damages: 30,
 		bonus: 500,
@@ -181,9 +194,19 @@ function countdown(time) {
 	}, 1000);
 }
 
-// function callout
-addCards(gameLvl[player.currentlvl].cards);
-countdown(gameLvl[player.currentlvl].time);
+/*>>-f->>  Function: clear all existing cards (uses: next level/ replay same level)  ***/
+
+const removeAllChilds = (parent) => {
+	while (parent.lastChild) {
+		parent.removeChild(parent.lastChild);
+	}
+};
+
+// >>-f->>  Function: start play
+function startPlay() {
+	addCards(gameLvl[player.currentlvl].cards);
+	countdown(gameLvl[player.currentlvl].time);
+}
 
 /*** DOM events ***/
 
@@ -207,7 +230,12 @@ cardbox.addEventListener("click", (e) => {
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
 
 function check2Cards() {
-	if (
+	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
+		console.log(true);
+		matchedPair();
+		cardsImgClicked = [];
+		player.nextLevel();
+	} else if (
 		cardsImgClicked.length === 2 &&
 		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"]
 	) {
@@ -237,7 +265,7 @@ function matchedPair() {
 	player.addComplete();
 	player.addCoins(gameLvl[player.currentlvl].earning);
 	if (player.complete === gameLvl[player.currentlvl].pairs) {
-		player.nextLevel();
+		player.completeALevel();
 	}
 }
 
