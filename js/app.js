@@ -1,59 +1,8 @@
 // import DefaultExport from "./module.js";
 
-/***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
+//--- DATA Objects for Games level structures & player ***/
 
-function randCardsArr(num) {
-	const randId = () => {
-		return Math.floor(Math.random() * 162);
-	};
-	let array = [];
-	do {
-		let j = randId();
-		if (!array.includes(j)) {
-			array.push(j);
-		}
-	} while (array.length < num);
-
-	const dblCardsArr = (arr) => {
-		const shuffleArray = (arr) => {
-			for (let i = arr.length - 1; i > 0; i--) {
-				const j = Math.floor(Math.random() * (i + 1));
-				const temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-			}
-			return arr;
-		};
-		let arrX2 = [...shuffleArray(arr), ...shuffleArray(arr)];
-		return shuffleArray(arrX2);
-	};
-	return dblCardsArr(array);
-}
-
-/*** Function: Generate Cards in <div id=id# class = cards> >>-f->> addCards(cards no.) appending into HTML page  ***/
-
-function addCards(num) {
-	currLvlCardsArr = randCardsArr(gameLvl[player.currentlvl].cards / 2);
-	for (let i = 0; i < num; i++) {
-		let newDiv = document.createElement("div");
-		let image = new Image();
-
-		document
-			.getElementById("cardbox")
-			.appendChild(newDiv)
-			.setAttribute("id", i);
-
-		let docId = document.getElementById(i);
-		docId.className = "cards";
-
-		image.src = "../images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
-		image.setAttribute("img", currLvlCardsArr[i]);
-		docId.appendChild(image).className = "hide cutie";
-	}
-}
-
-/*** Data Objects for Games level structures & player ***/
-
+// class for player setup
 class User {
 	constructor(name) {
 		this.name = name;
@@ -84,25 +33,120 @@ class User {
 	}
 }
 
-const player = new User("lee");
-
+// game level structures
 const gameLvl = {
-	1: { level: "Level 1", cards: 8, pairs: 4, time: 60 },
-	2: { level: "Level 2", cards: 16, pairs: 8, time: 60 },
-	3: { level: "Level 3", cards: 24, pairs: 12, time: 90 },
-	4: { level: "Level 4", cards: 32, pairs: 16, time: 90 },
-	5: { level: "Level 5", cards: 40, pairs: 20, time: 90 },
+	1: {
+		level: "Level 1",
+		cards: 20,
+		pairs: 10,
+		time: 60,
+		earning: 50,
+		damages: 10,
+		bonus: 250,
+	},
+	2: {
+		level: "Level 2",
+		cards: 30,
+		pairs: 15,
+		time: 60,
+		earning: 75,
+		damages: 30,
+		bonus: 500,
+	},
+	3: {
+		level: "Level 3",
+		cards: 40,
+		pairs: 20,
+		time: 90,
+		earning: 100,
+		damages: 60,
+		bonus: 1000,
+	},
+	4: {
+		level: "Level 4",
+		cards: 50,
+		pairs: 25,
+		time: 90,
+		earning: 150,
+		damages: 120,
+		bonus: 2500,
+	},
+	5: {
+		level: "Level 5",
+		cards: 60,
+		pairs: 30,
+		time: 90,
+		earning: 200,
+		damages: 200,
+		bonus: 5000,
+	},
 };
 
+// -- GLOBAL variables
+const player = new User("lee");
 let currLvlCardsArr;
 let cardsImgClicked = [];
 
-addCards(gameLvl[player.currentlvl].cards);
+const cardbox = document.getElementById("cardbox");
 
-let coinsTxt = document.getElementById("coins");
-let achievementTxt = document.getElementById("achievement");
-let movesTxt = document.getElementById("moves");
-let timeTxt = document.getElementById("time");
+const coinsTxt = document.getElementById("coins");
+const achievementTxt = document.getElementById("achievement");
+const movesTxt = document.getElementById("moves");
+const timeTxt = document.getElementById("time");
+
+/***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
+
+function randCardsArr(num) {
+	const randId = () => {
+		return Math.floor(Math.random() * 162);
+	};
+	let array = [];
+	do {
+		let j = randId();
+		if (!array.includes(j)) {
+			array.push(j);
+		}
+	} while (array.length < num);
+
+	const dblCardsArr = (arr) => {
+		const shuffleArray = (arr) => {
+			for (let i = arr.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				const temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+			return arr;
+		};
+		let arrX2 = [...shuffleArray(arr), ...shuffleArray(arr)];
+		return shuffleArray(arrX2);
+	};
+	return dblCardsArr(array);
+}
+
+/*>>-f->>  Function: Generate Cards in div id=id# class=cards addCards(cards no.) appending into HTML page  ***/
+
+function addCards(num) {
+	currLvlCardsArr = randCardsArr(gameLvl[player.currentlvl].cards / 2);
+	for (let i = 0; i < num; i++) {
+		let newDiv = document.createElement("div");
+		let image = new Image();
+
+		document
+			.getElementById("cardbox")
+			.appendChild(newDiv)
+			.setAttribute("id", i);
+
+		let docId = document.getElementById(i);
+		docId.className = "cards";
+
+		image.src = "../images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
+		image.setAttribute("img", currLvlCardsArr[i]);
+		docId.appendChild(image).className = "hide cutie";
+	}
+}
+
+/*>>-f->>  Function: countdown(each level time)  ***/
 
 function countdown(time) {
 	let current = time;
@@ -121,14 +165,11 @@ function countdown(time) {
 	}, 1000);
 }
 
-// usage:
-countdown(1000);
+// function callout
+addCards(gameLvl[player.currentlvl].cards);
+// countdown(gameLvl[player.currentlvl].time);
 
 /*** DOM events ***/
-
-const cardbox = document.getElementById("cardbox");
-
-/*** Function: get card img by cards click ***/
 
 cardbox.addEventListener("click", (e) => {
 	let imgClicked = e.target.firstChild;
@@ -140,15 +181,9 @@ cardbox.addEventListener("click", (e) => {
 	} else {
 		imgClicked.classList.add("hide");
 	}
-	// imgClicked.classList.toggle();
-	console.log(e.target);
-	console.log(imgClicked);
-	console.log(img);
-	console.log(divId);
-	console.log(cardsImgClicked);
 });
 
-/*** Function: Check cards img if same ***/
+/*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
 
 function check2Cards() {
 	if (
@@ -156,6 +191,7 @@ function check2Cards() {
 		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"]
 	) {
 		console.log(true);
+		matchedPair();
 		document.getElementById(cardsImgClicked[0]["divId"]).style.visibility =
 			"hidden";
 		document.getElementById(cardsImgClicked[1]["divId"]).style.visibility =
@@ -163,6 +199,7 @@ function check2Cards() {
 		cardsImgClicked = [];
 	} else {
 		console.log(false);
+		xMatch();
 		document
 			.getElementById(cardsImgClicked[0]["divId"])
 			.firstChild.classList.add("hide");
@@ -173,4 +210,17 @@ function check2Cards() {
 	}
 }
 
-/***   ***/
+/*>>-f->>  Function: matchedPair and xMatch ***/
+function matchedPair() {
+	player.addMoves();
+	player.addComplete();
+	player.addCoins(gameLvl[player.currentlvl].earning);
+	if (player.complete === gameLvl[player.currentlvl].pairs) {
+		player.nextLevel();
+	}
+}
+
+function xMatch() {
+	player.addMoves();
+	player.deductCoins(gameLvl[player.currentlvl].damages);
+}
