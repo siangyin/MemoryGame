@@ -20,6 +20,11 @@ header {
 	height: 10vh;
 }
 
+span {
+	border: yellowgreen solid 3px;
+	background-color: limegreen;
+}
+
 .container {
 	display: flexbox;
 }

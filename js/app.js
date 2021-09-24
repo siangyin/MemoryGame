@@ -15,21 +15,27 @@ class User {
 
 	addCoins(num) {
 		this.coins += num;
+		coinsTxt.textContent = this.coins;
 	}
 	deductCoins(num) {
 		this.coins -= num;
+		coinsTxt.textContent = this.coins;
 	}
 
 	addMoves() {
 		this.moves++;
+		movesTxt.textContent = this.moves;
 	}
 
 	addComplete() {
 		this.complete++;
+		achievementTxt.textContent = this.complete;
 	}
 
 	nextLevel() {
 		this.currentlvl++;
+		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
+		addCards(gameLvl[this.currentlvl].cards);
 	}
 }
 
@@ -89,6 +95,7 @@ let cardsImgClicked = [];
 
 const cardbox = document.getElementById("cardbox");
 
+const h1LvlTxt = document.getElementById("level");
 const coinsTxt = document.getElementById("coins");
 const achievementTxt = document.getElementById("achievement");
 const movesTxt = document.getElementById("moves");
@@ -167,7 +174,7 @@ function countdown(time) {
 
 // function callout
 addCards(gameLvl[player.currentlvl].cards);
-// countdown(gameLvl[player.currentlvl].time);
+countdown(gameLvl[player.currentlvl].time);
 
 /*** DOM events ***/
 
