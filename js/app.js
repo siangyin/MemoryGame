@@ -181,6 +181,11 @@ cardbox.addEventListener("click", (e) => {
 	} else {
 		imgClicked.classList.add("hide");
 	}
+	setTimeout(function () {
+		if (cardsImgClicked.length === 2) {
+			check2Cards();
+		}
+	}, 1500);
 });
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
