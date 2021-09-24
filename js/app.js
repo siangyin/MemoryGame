@@ -1,10 +1,4 @@
-/*** >> Function to get player name input ***/
-
-let playername;
-function getPlayerName() {
-	const playername = document.getElementById("playername").value;
-	console.log(playername);
-}
+// import DefaultExport from "./module.js";
 
 /***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
 
@@ -107,38 +101,35 @@ const gameLvl = {
 };
 
 let currLvlCardsArr;
+let cardsImgClicked = [];
 
 addCards(gameLvl[player.currentlvl].cards);
 
 // document.getElementById("1").firstChild.style.visibility = "visible";
 
 /*** DOM events ***/
-function gotalert() {
-	alert("Clicked!");
-}
 
 const cardbox = document.getElementById("cardbox");
-// cardbox.addEventListener("click", (e) => {
-// 	let imgClicked = e;
-// 	let img = e.target.getAttribute("img");
-// 	console.log(imgClicked);
-// 	console.log(e.target);
-// 	console.log(img);
-// 	console.log(e.target);
-// });
 
-/*** Function: toggle cards hide or show  ***/
-// const cards
-// function toggleCards() {
-//  if ()
-// }
+/*** Function: get card img by cards click ***/
 
 cardbox.addEventListener("click", (e) => {
 	let imgClicked = e.target.firstChild;
-	imgClicked.classList.toggle("hide");
+	let img = imgClicked.getAttribute("img");
+	let divId = e.target.getAttribute("id");
+	if (imgClicked.classList.contains("hide")) {
+		imgClicked.classList.remove("hide");
+		cardsImgClicked.push(img);
+	} else {
+		imgClicked.classList.add("hide");
+	}
 	// imgClicked.classList.toggle();
 	console.log(e.target);
 	console.log(imgClicked);
+	console.log(img);
+	console.log(divId);
+	console.log(cardsImgClicked);
 });
 
+console.log(cardsImgClicked);
 /***   ***/
