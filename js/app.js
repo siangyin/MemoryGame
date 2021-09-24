@@ -104,13 +104,17 @@ let achievementTxt = document.getElementById("achievement");
 let movesTxt = document.getElementById("moves");
 let timeTxt = document.getElementById("time");
 
-function countdown(from) {
-	let current = from;
-
+function countdown(time) {
+	let current = time;
+	timeFormater = (from) => {
+		let min = parseInt(from / 60);
+		let sec = from % 60 > 9 ? from % 60 : `0${from % 60}`;
+		return `${min}:${sec}`;
+	};
 	let timerInt = setInterval(function () {
-		console.log(current);
-		if (current == 1) {
-			console.log("times's up");
+		timeTxt.textContent = timeFormater(current);
+		if (current === 0) {
+			alert("times's up");
 			clearInterval(timerInt);
 		}
 		current--;
@@ -118,7 +122,7 @@ function countdown(from) {
 }
 
 // usage:
-countdown(5);
+countdown(1000);
 
 /*** DOM events ***/
 
