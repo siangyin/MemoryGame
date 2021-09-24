@@ -52,12 +52,6 @@ function addCards(num) {
 	}
 }
 
-/*** Function: Check cards img  ***/
-
-const checkCards = (num1, num2) => {
-	return 0;
-};
-
 /*** Data Objects for Games level structures & player ***/
 
 class User {
@@ -105,7 +99,26 @@ let cardsImgClicked = [];
 
 addCards(gameLvl[player.currentlvl].cards);
 
-// document.getElementById("1").firstChild.style.visibility = "visible";
+let coinsTxt = document.getElementById("coins");
+let achievementTxt = document.getElementById("achievement");
+let movesTxt = document.getElementById("moves");
+let timeTxt = document.getElementById("time");
+
+function countdown(from) {
+	let current = from;
+
+	let timerInt = setInterval(function () {
+		console.log(current);
+		if (current == 1) {
+			console.log("times's up");
+			clearInterval(timerInt);
+		}
+		current--;
+	}, 1000);
+}
+
+// usage:
+countdown(5);
 
 /*** DOM events ***/
 
@@ -119,7 +132,7 @@ cardbox.addEventListener("click", (e) => {
 	let divId = e.target.getAttribute("id");
 	if (imgClicked.classList.contains("hide")) {
 		imgClicked.classList.remove("hide");
-		cardsImgClicked.push(img);
+		cardsImgClicked.push({ divId: divId, img: img });
 	} else {
 		imgClicked.classList.add("hide");
 	}
@@ -131,5 +144,29 @@ cardbox.addEventListener("click", (e) => {
 	console.log(cardsImgClicked);
 });
 
-console.log(cardsImgClicked);
+/*** Function: Check cards img if same ***/
+
+function check2Cards() {
+	if (
+		cardsImgClicked.length === 2 &&
+		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"]
+	) {
+		console.log(true);
+		document.getElementById(cardsImgClicked[0]["divId"]).style.visibility =
+			"hidden";
+		document.getElementById(cardsImgClicked[1]["divId"]).style.visibility =
+			"hidden";
+		cardsImgClicked = [];
+	} else {
+		console.log(false);
+		document
+			.getElementById(cardsImgClicked[0]["divId"])
+			.firstChild.classList.add("hide");
+		document
+			.getElementById(cardsImgClicked[1]["divId"])
+			.firstChild.classList.add("hide");
+		cardsImgClicked = [];
+	}
+}
+
 /***   ***/
