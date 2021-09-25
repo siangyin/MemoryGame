@@ -13,3 +13,7 @@ function enableAutoplay() {
 music.oncanplay = function () {
 	alert("Can start playing video");
 };
+
+document.addEventListener("DOMContentLoaded", function () {
+	music.load();
+});
