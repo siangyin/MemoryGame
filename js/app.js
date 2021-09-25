@@ -115,9 +115,8 @@ const gameLvl = {
 const player = new User("lee");
 let currLvlCardsArr;
 let cardsImgClicked = [];
-
+const left1Pair = player.complete === gameLvl[player.currentlvl].pairs - 1;
 const cardbox = document.getElementById("cardbox");
-
 const h1LvlTxt = document.getElementById("level");
 const coinsTxt = document.getElementById("coins");
 const achievementTxt = document.getElementById("achievement");
@@ -231,8 +230,7 @@ cardbox.addEventListener("click", (e) => {
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
 
 function check2Cards() {
-	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
-		//leftonepair
+	if (left1Pair) {
 		console.log(true);
 		matchedPair();
 		cardsImgClicked = [];
@@ -240,7 +238,7 @@ function check2Cards() {
 		// return
 	} else if (
 		cardsImgClicked.length === 2 &&
-		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2samecards
+		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2SameCards
 	) {
 		console.log(true);
 		matchedPair();
