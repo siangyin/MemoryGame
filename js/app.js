@@ -211,7 +211,6 @@ function startPlay() {
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
-	console.log(cardsImgClicked.length);
 	if (cardsImgClicked.length === 2) {
 		return;
 	}
@@ -225,6 +224,7 @@ cardbox.addEventListener("click", (e) => {
 		imgClicked.classList.add("hide");
 	}
 	setTimeout(check2Cards, gameLvl[player.currentlvl].speed);
+	console.log(cardsImgClicked);
 });
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
@@ -243,11 +243,11 @@ function check2Cards() {
 		console.log(true);
 		matchedPair();
 		document.getElementById(cardsImgClicked[0]["divId"]).style.visibility =
-			"hidden"; // variable doc get elmt
+			"hidden";
 		document.getElementById(cardsImgClicked[1]["divId"]).style.visibility =
 			"hidden";
 		cardsImgClicked = [];
-	} else {
+	} else if (cardsImgClicked.length === 2) {
 		console.log(false);
 		xMatch();
 		document
