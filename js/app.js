@@ -4,7 +4,7 @@ class User {
 	constructor(name) {
 		this.name = name;
 		this.currentlvl = 1;
-		this.coins = 20;
+		this.coins = startingCoins;
 		this.complete = 0;
 		this.moves = 0;
 		this.sound = true;
@@ -39,6 +39,19 @@ class User {
 		this.complete = 0;
 		achievementTxt.textContent = this.complete;
 		clearInterval(timerInt);
+	}
+
+	replay() {
+		this.reset();
+		this.currentlvl = 1;
+		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
+		this.gamerecord = {};
+		this.coins = startingCoins;
+		coinsTxt.textContent = this.coins;
+		time = gameLvl[player.currentlvl].time;
+		timeTxt.textContent = timeFormater(time);
+		addCards(gameLvl[this.currentlvl].cards);
+		startGameTime = new Date().getTime();
 	}
 
 	completeALevel() {
@@ -127,6 +140,7 @@ const gameLvl = {
 };
 
 // -- GLOBAL variables
+let startingCoins = 20;
 const player = new User("lee");
 
 let currLvlCardsArr;
@@ -137,7 +151,7 @@ let gameTimeRec = 0;
 let time;
 time = gameLvl[player.currentlvl].time;
 
-const timerInt = setInterval(countDown, 1000);
+let timerInt;
 
 const cardbox = document.getElementById("cardbox");
 const h1LvlTxt = document.getElementById("level");
@@ -146,7 +160,10 @@ const achievementTxt = document.getElementById("achievement");
 const movesTxt = document.getElementById("moves");
 const timeTxt = document.getElementById("time");
 
-startPlay();
+document.addEventListener("DOMContentLoaded", function () {
+	startPlay();
+	timerInt = setInterval(countDown, 1000);
+});
 
 /***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
 
@@ -198,6 +215,7 @@ function addCards(num) {
 }
 
 // >>-f->>  Function: start play
+
 function startPlay() {
 	addCards(gameLvl[player.currentlvl].cards);
 
