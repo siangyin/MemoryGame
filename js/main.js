@@ -5,8 +5,8 @@ function getPlayerName() {
 	console.log(playername);
 }
 
-// document.addEventListener("DOMContentLoaded", function () {});
+document.addEventListener("DOMContentLoaded", function () {
+	bkgmusic.play();
+});
 
-// window.onload = function () {
-// 	music.load();
-// };
+const bkgmusic = new Audio("backgroundmusic0.mp3");

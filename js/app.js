@@ -57,7 +57,10 @@ class User {
 	}
 
 	completeALevel() {
-		bonus.play();
+		if (player.sound) {
+			bonus.play();
+		}
+
 		endGameTime = new Date().getTime();
 		gameTimeRec = parseInt((endGameTime - startGameTime) / 1000);
 
@@ -170,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	startPlay();
 });
 
-const mouseclick = new Audio("audio/flipping.wav");
+const flipping = new Audio("audio/flipping.wav");
 const wrongAns = new Audio("audio/wronganswerbuzz.wav");
 const correctAns = new Audio("audio/correctanswer.wav");
 const timesup = new Audio("audio/timesup.mp3");
@@ -270,17 +273,26 @@ function check2Cards() {
 	if (cardsImgClicked.length === 2) {
 		let is2SameCards = cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"];
 		if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
-			correctAns.play();
+			if (player.sound) {
+				correctAns.play();
+			}
+
 			matchedPair();
 			cardsImgClicked = [];
 		} else if (is2SameCards) {
-			correctAns.play();
+			if (player.sound) {
+				correctAns.play();
+			}
+
 			firstCardID.style.visibility = "hidden";
 			secondCardID.style.visibility = "hidden";
 			matchedPair();
 			cardsImgClicked = [];
 		} else if (!is2SameCards) {
-			wrongAns.play();
+			if (player.sound) {
+				wrongAns.play();
+			}
+
 			firstCardID.firstChild.classList.add("hide");
 			secondCardID.firstChild.classList.add("hide");
 
@@ -308,7 +320,9 @@ function xMatch() {
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
-	mouseclick.play();
+	if (player.sound) {
+		flipping.play();
+	}
 	if (cardsImgClicked.length === 2) {
 		return;
 	}
