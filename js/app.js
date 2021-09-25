@@ -9,7 +9,6 @@ class User {
 		this.moves = 0;
 		this.sound = true;
 		this.gamerecord = {};
-		this.currTime = 60;
 	}
 
 	addCoins(num) {
@@ -47,7 +46,7 @@ class User {
 		gameTimeRec = parseInt((endGameTime - startGameTime) / 1000);
 
 		console.log(
-			`Good Job, you have complete this level ${this.currentlvl} in ${gameTimeRec} sec`
+			`Good Job, you have complete ${this.currentlvl} in ${gameTimeRec} sec`
 		);
 
 		this.gamerecord[this.currentlvl] = gameTimeRec;
