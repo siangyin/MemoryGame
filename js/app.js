@@ -1,7 +1,4 @@
-// import DefaultExport from "./module.js";
-
 //--- DATA Objects for Games level structures & player ***/
-
 // class for player setup
 class User {
 	constructor(name) {
@@ -22,12 +19,10 @@ class User {
 		this.coins -= num;
 		coinsTxt.textContent = this.coins;
 	}
-
 	addMoves() {
 		this.moves++;
 		movesTxt.textContent = this.moves;
 	}
-
 	addComplete() {
 		this.complete++;
 		achievementTxt.textContent = this.complete;
@@ -47,13 +42,13 @@ class User {
 
 	nextLevel() {
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
+		currLvlCardsArr = [];
 		addCards(gameLvl[this.currentlvl].cards);
 		this.coins += gameLvl[this.currentlvl].cards;
 		this.moves = 0;
 		movesTxt.textContent = this.moves;
 		this.complete = 0;
 		achievementTxt.textContent = this.complete;
-		countdown(gameLvl[player.currentlvl].time);
 	}
 }
 
@@ -212,10 +207,6 @@ function startPlay() {
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
-	console.log(cardsImgClicked.length);
-	if (cardsImgClicked.length === 2) {
-		return;
-	}
 	let imgClicked = e.target.firstChild;
 	let img = imgClicked.getAttribute("img");
 	let divId = e.target.getAttribute("id");
@@ -225,20 +216,21 @@ cardbox.addEventListener("click", (e) => {
 	} else {
 		imgClicked.classList.add("hide");
 	}
-	setTimeout(check2Cards, gameLvl[player.currentlvl].speed);
+	setTimeout(function () {
+		if (cardsImgClicked.length === 2) {
+			check2Cards();
+		}
+	}, gameLvl[player.currentlvl].speed);
 });
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
 
 function check2Cards() {
 	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
-		//leftonepair
 		console.log(true);
 		matchedPair();
 		cardsImgClicked = [];
 		player.nextLevel();
-
-		// return
 	} else if (
 		cardsImgClicked.length === 2 &&
 		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2samecards
