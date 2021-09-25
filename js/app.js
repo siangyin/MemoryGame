@@ -128,6 +128,7 @@ const gameLvl = {
 
 // -- GLOBAL variables
 const player = new User("lee");
+
 let currLvlCardsArr;
 let cardsImgClicked = [];
 let startGameTime = 0;
@@ -135,10 +136,10 @@ let endGameTime = 0;
 let gameTimeRec = 0;
 let time;
 time = gameLvl[player.currentlvl].time;
-let timerInt = setInterval(countDown, 1000);
+
+const timerInt = setInterval(countDown, 1000);
 
 const cardbox = document.getElementById("cardbox");
-
 const h1LvlTxt = document.getElementById("level");
 const coinsTxt = document.getElementById("coins");
 const achievementTxt = document.getElementById("achievement");
@@ -185,10 +186,7 @@ function addCards(num) {
 		let newDiv = document.createElement("div");
 		let image = new Image();
 
-		document
-			.getElementById("cardbox")
-			.appendChild(newDiv)
-			.setAttribute("id", i);
+		cardbox.appendChild(newDiv).setAttribute("id", i);
 
 		let docId = document.getElementById(i);
 		docId.className = "cards";
@@ -199,7 +197,14 @@ function addCards(num) {
 	}
 }
 
-/*>>-f->>  Function: countdown(each level time)  ***/
+// >>-f->>  Function: start play
+function startPlay() {
+	addCards(gameLvl[player.currentlvl].cards);
+
+	startGameTime = new Date().getTime();
+}
+
+/*>>-f->>  Function: for timer countdown & time:format  ***/
 
 function timeFormater(time) {
 	let min = parseInt(time / 60);
@@ -222,13 +227,6 @@ function removeAllChilds(parent) {
 	while (parent.lastChild) {
 		parent.removeChild(parent.lastChild);
 	}
-}
-
-// >>-f->>  Function: start play
-function startPlay() {
-	addCards(gameLvl[player.currentlvl].cards);
-
-	startGameTime = new Date().getTime();
 }
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
