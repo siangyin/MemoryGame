@@ -61,8 +61,8 @@ class User {
 const gameLvl = {
 	1: {
 		level: "Level 1",
-		cards: 10,
-		pairs: 5,
+		cards: 4,
+		pairs: 2,
 		time: 60,
 		speed: 1500,
 		earning: 50,
@@ -235,6 +235,7 @@ function check2Cards() {
 		matchedPair();
 		cardsImgClicked = [];
 		player.nextLevel();
+
 		// return
 	} else if (
 		cardsImgClicked.length === 2 &&
