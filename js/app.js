@@ -209,13 +209,14 @@ function startPlay() {
 function timeFormater(time) {
 	let min = parseInt(time / 60);
 	let sec = time % 60 > 9 ? time % 60 : `0${time % 60}`;
-	return `${min}:${sec}`;
+	return `0${min}:${sec}`;
 }
 
 function countDown() {
 	timeTxt.textContent = timeFormater(time);
 	time--;
-	if (time === 0 || player.coins <= 0) {
+	if (time === 0 || player.coins < 0) {
+		timeTxt.textContent = timeFormater(time);
 		clearInterval(timerInt);
 		console.log("GAME OVER");
 	}
