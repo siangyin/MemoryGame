@@ -232,6 +232,9 @@ function removeAllChilds(parent) {
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
 
 function check2Cards() {
+	let firstCardID = document.getElementById(cardsImgClicked[0]["divId"]);
+	let secondCardID = document.getElementById(cardsImgClicked[1]["divId"]);
+
 	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
 		matchedPair();
 		cardsImgClicked = [];
@@ -240,19 +243,13 @@ function check2Cards() {
 		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2samecards
 	) {
 		matchedPair();
-		document.getElementById(cardsImgClicked[0]["divId"]).style.visibility =
-			"hidden"; // variable doc get elmt
-		document.getElementById(cardsImgClicked[1]["divId"]).style.visibility =
-			"hidden";
+		firstCardID.style.visibility = "hidden";
+		secondCardID.style.visibility = "hidden";
 		cardsImgClicked = [];
 	} else {
 		xMatch();
-		document
-			.getElementById(cardsImgClicked[0]["divId"])
-			.firstChild.classList.add("hide");
-		document
-			.getElementById(cardsImgClicked[1]["divId"])
-			.firstChild.classList.add("hide");
+		firstCardID.firstChild.classList.add("hide");
+		secondCardID.firstChild.classList.add("hide");
 		cardsImgClicked = [];
 	}
 }
