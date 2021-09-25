@@ -53,6 +53,7 @@ class User {
 		movesTxt.textContent = this.moves;
 		this.complete = 0;
 		achievementTxt.textContent = this.complete;
+		countdown(gameLvl[player.currentlvl].time);
 	}
 }
 
@@ -70,8 +71,8 @@ const gameLvl = {
 	},
 	2: {
 		level: "Level 2",
-		cards: 30,
-		pairs: 15,
+		cards: 10,
+		pairs: 5,
 		time: 60,
 		speed: 1400,
 		earning: 75,
@@ -80,8 +81,8 @@ const gameLvl = {
 	},
 	3: {
 		level: "Level 3",
-		cards: 40,
-		pairs: 20,
+		cards: 10,
+		pairs: 5,
 		time: 90,
 		speed: 1300,
 		earning: 100,
@@ -90,8 +91,8 @@ const gameLvl = {
 	},
 	4: {
 		level: "Level 4",
-		cards: 50,
-		pairs: 25,
+		cards: 10,
+		pairs: 5,
 		time: 90,
 		speed: 1200,
 		earning: 150,
@@ -100,8 +101,8 @@ const gameLvl = {
 	},
 	5: {
 		level: "Level 5",
-		cards: 60,
-		pairs: 30,
+		cards: 10,
+		pairs: 5,
 		time: 90,
 		speed: 1000,
 		earning: 200,
