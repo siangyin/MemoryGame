@@ -35,13 +35,18 @@
 			<img id="playbtn" src="./images/playbutton.png" alt="playbutton" />
 		</a>
 
-		<embed
-			name="backgroundmusic0"
-			src="https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic0.mp3"
-			loop="true"
-			hidden="true"
-			autostart="true"
-		/>
+		<audio controls>
+			<source
+				src="https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic0.mp3"
+				type="audio/mpeg"
+				name="backgroundmusic0"
+				src="loop"
+				="true"
+				hidden="true"
+				autostart="true"
+			/>
+			Your browser does not support the audio element.
+		</audio>
 
 		<script src="js/module.js"></script>
 	</body>
