@@ -218,11 +218,11 @@ function countDown() {
 
 /*>>-f->>  Function: clear all existing cards (uses: next level/ replay same level)  ***/
 
-const removeAllChilds = (parent) => {
+function removeAllChilds(parent) {
 	while (parent.lastChild) {
 		parent.removeChild(parent.lastChild);
 	}
-};
+}
 
 // >>-f->>  Function: start play
 function startPlay() {
@@ -230,28 +230,6 @@ function startPlay() {
 
 	startGameTime = new Date().getTime();
 }
-
-/*** DOM events ***/
-
-cardbox.addEventListener("click", (e) => {
-	if (cardsImgClicked.length === 2) {
-		return;
-	}
-	let imgClicked = e.target.firstChild;
-	let img = imgClicked.getAttribute("img");
-	let divId = e.target.getAttribute("id");
-	if (imgClicked.classList.contains("hide")) {
-		imgClicked.classList.remove("hide");
-		cardsImgClicked.push({ divId: divId, img: img });
-	} else {
-		imgClicked.classList.add("hide");
-	}
-	setTimeout(function () {
-		if (cardsImgClicked.length === 2) {
-			check2Cards();
-		}
-	}, gameLvl[player.currentlvl].speed);
-});
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
 
@@ -295,3 +273,25 @@ function xMatch() {
 	player.addMoves();
 	player.deductCoins(gameLvl[player.currentlvl].damages);
 }
+
+/*** DOM events ***/
+
+cardbox.addEventListener("click", (e) => {
+	if (cardsImgClicked.length === 2) {
+		return;
+	}
+	let imgClicked = e.target.firstChild;
+	let img = imgClicked.getAttribute("img");
+	let divId = e.target.getAttribute("id");
+	if (imgClicked.classList.contains("hide")) {
+		imgClicked.classList.remove("hide");
+		cardsImgClicked.push({ divId: divId, img: img });
+	} else {
+		imgClicked.classList.add("hide");
+	}
+	setTimeout(function () {
+		if (cardsImgClicked.length === 2) {
+			check2Cards();
+		}
+	}, gameLvl[player.currentlvl].speed);
+});
