@@ -15,10 +15,6 @@ body {
 	text-align: center;
 }
 
-audio {
-	display: none;
-}
-
 input {
 	border: #fda4e2 solid 5px;
 	height: 50px;

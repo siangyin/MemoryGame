@@ -20,6 +20,10 @@ header {
 	height: 10vh;
 }
 
+audio {
+	display: none;
+}
+
 span {
 	border: yellowgreen solid 3px;
 	background-color: limegreen;
