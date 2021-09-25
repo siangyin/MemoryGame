@@ -57,6 +57,7 @@ class User {
 	}
 
 	completeALevel() {
+		bonus.play();
 		endGameTime = new Date().getTime();
 		gameTimeRec = parseInt((endGameTime - startGameTime) / 1000);
 
@@ -168,10 +169,12 @@ achievementTxt.textContent = `${player.complete} / ${
 document.addEventListener("DOMContentLoaded", function () {
 	startPlay();
 });
-const mouseclick = new Audio("audio/mouseclick.mp3");
+
+const mouseclick = new Audio("audio/flipping.wav");
 const wrongAns = new Audio("audio/wronganswerbuzz.wav");
 const correctAns = new Audio("audio/correctanswer.wav");
 const timesup = new Audio("audio/timesup.mp3");
+const bonus = new Audio("audio/prize.wav");
 
 /***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
 
@@ -241,7 +244,7 @@ function timeFormater(time) {
 function countDown() {
 	timeTxt.textContent = timeFormater(time);
 	time--;
-	if (time === 0 || player.coins < 0) {
+	if (time === 0 || player.coins <= 0) {
 		clearInterval(timerInt);
 		timesup.play();
 		console.log("GAME OVER");
