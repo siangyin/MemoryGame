@@ -232,18 +232,20 @@ cardbox.addEventListener("click", (e) => {
 
 function check2Cards() {
 	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
+		//leftonepair
 		console.log(true);
 		matchedPair();
 		cardsImgClicked = [];
 		player.nextLevel();
+		// return
 	} else if (
 		cardsImgClicked.length === 2 &&
-		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"]
+		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2samecards
 	) {
 		console.log(true);
 		matchedPair();
 		document.getElementById(cardsImgClicked[0]["divId"]).style.visibility =
-			"hidden";
+			"hidden"; // variable doc get elmt
 		document.getElementById(cardsImgClicked[1]["divId"]).style.visibility =
 			"hidden";
 		cardsImgClicked = [];
