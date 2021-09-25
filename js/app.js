@@ -59,7 +59,7 @@ class User {
 		gameTimeRec = parseInt((endGameTime - startGameTime) / 1000);
 
 		console.log(
-			`Good Job, you have complete ${this.currentlvl} in ${gameTimeRec} sec`
+			`Good Job, you have completed Level ${this.currentlvl} in ${gameTimeRec} sec`
 		);
 
 		this.gamerecord[this.currentlvl] = gameTimeRec;
@@ -151,7 +151,7 @@ let gameTimeRec = 0;
 let time;
 time = gameLvl[player.currentlvl].time;
 
-let timerInt;
+const timerInt = setInterval(countDown, 1000);
 
 const cardbox = document.getElementById("cardbox");
 const h1LvlTxt = document.getElementById("level");
@@ -162,7 +162,6 @@ const timeTxt = document.getElementById("time");
 
 document.addEventListener("DOMContentLoaded", function () {
 	startPlay();
-	timerInt = setInterval(countDown, 1000);
 });
 
 /***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
@@ -234,10 +233,10 @@ function countDown() {
 	timeTxt.textContent = timeFormater(time);
 	time--;
 	if (time === 0 || player.coins < 0) {
-		timeTxt.textContent = timeFormater(time);
 		clearInterval(timerInt);
 		console.log("GAME OVER");
 	}
+	timeTxt.textContent = timeFormater(time);
 }
 
 /*>>-f->>  Function: clear all existing cards (uses: next level/ replay same level)  ***/
