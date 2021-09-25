@@ -28,28 +28,47 @@ class User {
 		achievementTxt.textContent = this.complete;
 	}
 
-	completeALevel() {
-		console.log(
-			`Good Job, you have complete this level ${this.currentlvl} in ${timeTxt.textContent}`
-		);
-		this.gamerecord[this.currentlvl] = timeTxt.textContent;
+	reset() {
 		removeAllChilds(cardbox);
 		currLvlCardsArr = [];
-		this.coins += gameLvl[this.currentlvl].bonus;
-		coinsTxt.textContent = this.coins;
-		this.currentlvl++;
-	}
-
-	nextLevel() {
-		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
-		currLvlCardsArr = [];
-		addCards(gameLvl[this.currentlvl].cards);
-		this.coins += gameLvl[this.currentlvl].cards;
+		startGameTime = 0;
+		endGameTime = 0;
+		gameTimeRec = 0;
 		this.moves = 0;
 		movesTxt.textContent = this.moves;
 		this.complete = 0;
 		achievementTxt.textContent = this.complete;
-		countdown(gameLvl[player.currentlvl].time);
+	}
+
+	completeALevel() {
+		endGameTime = new Date().getTime();
+		gameTimeRec = parseInt((endGameTime - startGameTime) / 1000);
+
+		console.log(
+			`Good Job, you have complete this level ${this.currentlvl} in ${gameTimeRec} sec`
+		);
+
+		this.gamerecord[this.currentlvl] = gameTimeRec;
+		this.coins += gameLvl[this.currentlvl].bonus;
+		coinsTxt.textContent = this.coins;
+
+		if (this.currentlvl === Object.keys(gameLvl).length) {
+			console.log("Well Done, you have completed all levels");
+			this.reset();
+		} else {
+			this.currentlvl++;
+			this.reset();
+			this.nextLevel();
+		}
+	}
+
+	nextLevel() {
+		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
+
+		addCards(gameLvl[this.currentlvl].cards);
+
+		// countdown(gameLvl[player.currentlvl].time);
+		startGameTime = new Date().getTime();
 	}
 }
 
@@ -61,9 +80,9 @@ const gameLvl = {
 		pairs: 2,
 		time: 60,
 		speed: 1500,
-		earning: 50,
+		earning: 20,
 		damages: 10,
-		bonus: 250,
+		bonus: 100,
 	},
 	2: {
 		level: "Level 2",
@@ -71,9 +90,9 @@ const gameLvl = {
 		pairs: 3,
 		time: 60,
 		speed: 1400,
-		earning: 75,
-		damages: 30,
-		bonus: 500,
+		earning: 20,
+		damages: 10,
+		bonus: 100,
 	},
 	3: {
 		level: "Level 3",
@@ -81,29 +100,29 @@ const gameLvl = {
 		pairs: 3,
 		time: 90,
 		speed: 1300,
-		earning: 100,
-		damages: 60,
-		bonus: 1000,
+		earning: 20,
+		damages: 10,
+		bonus: 100,
 	},
 	4: {
 		level: "Level 4",
 		cards: 6,
 		pairs: 3,
 		time: 90,
-		speed: 1200,
-		earning: 150,
-		damages: 120,
-		bonus: 2500,
+		speed: 1000,
+		earning: 20,
+		damages: 10,
+		bonus: 100,
 	},
 	5: {
 		level: "Level 5",
 		cards: 6,
 		pairs: 3,
 		time: 90,
-		speed: 1000,
-		earning: 200,
-		damages: 200,
-		bonus: 5000,
+		speed: 800,
+		earning: 20,
+		damages: 10,
+		bonus: 100,
 	},
 };
 
@@ -111,6 +130,9 @@ const gameLvl = {
 const player = new User("lee");
 let currLvlCardsArr;
 let cardsImgClicked = [];
+let startGameTime = 0;
+let endGameTime = 0;
+let gameTimeRec = 0;
 
 const cardbox = document.getElementById("cardbox");
 
@@ -174,22 +196,27 @@ function addCards(num) {
 
 /*>>-f->>  Function: countdown(each level time)  ***/
 
-function countdown(time) {
-	let current = time;
-	timeFormater = (from) => {
-		let min = parseInt(from / 60);
-		let sec = from % 60 > 9 ? from % 60 : `0${from % 60}`;
-		return `${min}:${sec}`;
-	};
-	let timerInt = setInterval(function () {
-		timeTxt.textContent = timeFormater(current);
-		if (current === 0) {
-			alert("times's up");
-			clearInterval(timerInt);
-		}
-		current--;
-	}, 1000);
-}
+// function countdown(time) {
+// 	let current = time;
+// 	timeFormater = (from) => {
+// 		let min = parseInt(from / 60);
+// 		let sec = from % 60 > 9 ? from % 60 : `0${from % 60}`;
+// 		return `${min}:${sec}`;
+// 	};
+// 	let timerInt = setInterval(function () {
+// 		timeTxt.textContent = timeFormater(current);
+
+// 		if (current === 0 || player.coins <= 0) {
+// 			clearInterval(timerInt);
+// 			alert("GAME OVER");
+// 		}
+// 		current--;
+// 	}, 1000);
+// 	if (player.complete === gameLvl[player.currentlvl].pairs) {
+// 		clearInterval(timerInt);
+// 		alert(`${gameLvl[player.currentlvl].level} COMPLETED`);
+// 	}
+// }
 
 /*>>-f->>  Function: clear all existing cards (uses: next level/ replay same level)  ***/
 
@@ -202,12 +229,16 @@ const removeAllChilds = (parent) => {
 // >>-f->>  Function: start play
 function startPlay() {
 	addCards(gameLvl[player.currentlvl].cards);
-	countdown(gameLvl[player.currentlvl].time);
+	// countdown(gameLvl[player.currentlvl].time);
+	startGameTime = new Date().getTime();
 }
 
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
+	if (cardsImgClicked.length === 2) {
+		return;
+	}
 	let imgClicked = e.target.firstChild;
 	let img = imgClicked.getAttribute("img");
 	let divId = e.target.getAttribute("id");
@@ -228,15 +259,12 @@ cardbox.addEventListener("click", (e) => {
 
 function check2Cards() {
 	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
-		console.log(true);
 		matchedPair();
 		cardsImgClicked = [];
-		player.nextLevel();
 	} else if (
 		cardsImgClicked.length === 2 &&
 		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2samecards
 	) {
-		console.log(true);
 		matchedPair();
 		document.getElementById(cardsImgClicked[0]["divId"]).style.visibility =
 			"hidden"; // variable doc get elmt
@@ -244,7 +272,6 @@ function check2Cards() {
 			"hidden";
 		cardsImgClicked = [];
 	} else {
-		console.log(false);
 		xMatch();
 		document
 			.getElementById(cardsImgClicked[0]["divId"])
