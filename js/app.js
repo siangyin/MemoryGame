@@ -212,6 +212,10 @@ function startPlay() {
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
+	console.log(cardsImgClicked.length);
+	if (cardsImgClicked.length === 2) {
+		return;
+	}
 	let imgClicked = e.target.firstChild;
 	let img = imgClicked.getAttribute("img");
 	let divId = e.target.getAttribute("id");
@@ -221,11 +225,7 @@ cardbox.addEventListener("click", (e) => {
 	} else {
 		imgClicked.classList.add("hide");
 	}
-	setTimeout(function () {
-		if (cardsImgClicked.length === 2) {
-			check2Cards();
-		}
-	}, gameLvl[player.currentlvl].speed);
+	setTimeout(check2Cards, gameLvl[player.currentlvl].speed);
 });
 
 /*>>-f->>  Function: Check cards img if same and push to temp arr with cards id and img ***/
