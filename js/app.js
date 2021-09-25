@@ -170,7 +170,7 @@ function addCards(num) {
 		let docId = document.getElementById(i);
 		docId.className = "cards";
 
-		image.src = "/images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
+		image.src = "images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
 		image.setAttribute("img", currLvlCardsArr[i]);
 		docId.appendChild(image).className = "hide cutie";
 	}
