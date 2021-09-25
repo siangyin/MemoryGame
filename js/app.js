@@ -165,9 +165,14 @@ const coinsTxt = document.getElementById("coins");
 const achievementTxt = document.getElementById("achievement");
 const movesTxt = document.getElementById("moves");
 const timeTxt = document.getElementById("time");
+const replayBtn = document.getElementById("replayBtn");
+const soundBtn = document.getElementById("soundBtn");
+
 achievementTxt.textContent = `${player.complete} / ${
 	gameLvl[player.currentlvl].pairs
 }`;
+
+replayBtn.addEventListener("click", player.replay);
 
 document.addEventListener("DOMContentLoaded", function () {
 	startPlay();
@@ -249,7 +254,10 @@ function countDown() {
 	time--;
 	if (time === 0 || player.coins <= 0) {
 		clearInterval(timerInt);
-		timesup.play();
+		if (player.sound) {
+			timesup.play();
+		}
+
 		console.log("GAME OVER");
 	}
 	timeTxt.textContent = timeFormater(time);
@@ -341,4 +349,16 @@ cardbox.addEventListener("click", (e) => {
 			check2Cards();
 		}
 	}, gameLvl[player.currentlvl].speed);
+});
+
+soundBtn.addEventListener("click", (e) => {
+	if (e.target.textContent === "🔔") {
+		player.sound = false;
+		e.target.textContent = "🔕";
+		document.getElementById("bkgmusic").muted = true;
+	} else {
+		player.sound = true;
+		e.target.textContent = "🔔";
+		document.getElementById("bkgmusic").muted = false;
+	}
 });
