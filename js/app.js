@@ -25,7 +25,9 @@ class User {
 	}
 	addComplete() {
 		this.complete++;
-		achievementTxt.textContent = this.complete;
+		achievementTxt.textContent = `${this.complete} / ${
+			gameLvl[this.currentlvl].pairs
+		}`;
 	}
 
 	reset() {
@@ -159,10 +161,16 @@ const coinsTxt = document.getElementById("coins");
 const achievementTxt = document.getElementById("achievement");
 const movesTxt = document.getElementById("moves");
 const timeTxt = document.getElementById("time");
+achievementTxt.textContent = `${player.complete} / ${
+	gameLvl[player.currentlvl].pairs
+}`;
 
 document.addEventListener("DOMContentLoaded", function () {
 	startPlay();
 });
+const mouseclick = new Audio("audio/mouseclick.mp3");
+const wrongAns = new Audio("audio/wronganswerbuzz.wav");
+const correctAns = new Audio("audio/correctanswer.wav");
 
 /***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
 
@@ -252,23 +260,28 @@ function removeAllChilds(parent) {
 function check2Cards() {
 	let firstCardID = document.getElementById(cardsImgClicked[0]["divId"]);
 	let secondCardID = document.getElementById(cardsImgClicked[1]["divId"]);
+	//
 
-	if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
-		matchedPair();
-		cardsImgClicked = [];
-	} else if (
-		cardsImgClicked.length === 2 &&
-		cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"] //is2samecards
-	) {
-		matchedPair();
-		firstCardID.style.visibility = "hidden";
-		secondCardID.style.visibility = "hidden";
-		cardsImgClicked = [];
-	} else {
-		xMatch();
-		firstCardID.firstChild.classList.add("hide");
-		secondCardID.firstChild.classList.add("hide");
-		cardsImgClicked = [];
+	if (cardsImgClicked.length === 2) {
+		let is2SameCards = cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"];
+		if (player.complete === gameLvl[player.currentlvl].pairs - 1) {
+			correctAns.play();
+			matchedPair();
+			cardsImgClicked = [];
+		} else if (is2SameCards) {
+			correctAns.play();
+			firstCardID.style.visibility = "hidden";
+			secondCardID.style.visibility = "hidden";
+			matchedPair();
+			cardsImgClicked = [];
+		} else if (!is2SameCards) {
+			wrongAns.play();
+			firstCardID.firstChild.classList.add("hide");
+			secondCardID.firstChild.classList.add("hide");
+
+			xMatch();
+			cardsImgClicked = [];
+		}
 	}
 }
 
@@ -290,6 +303,7 @@ function xMatch() {
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
+	mouseclick.play();
 	if (cardsImgClicked.length === 2) {
 		return;
 	}
@@ -302,6 +316,7 @@ cardbox.addEventListener("click", (e) => {
 	} else {
 		imgClicked.classList.add("hide");
 	}
+
 	setTimeout(function () {
 		if (cardsImgClicked.length === 2) {
 			check2Cards();
