@@ -47,11 +47,22 @@ class User {
 		movesTxt.textContent = this.moves;
 		this.complete = 0;
 		achievementTxt.textContent = this.complete;
-		clearInterval(timerInt);
+		stopInt();
 	}
 
 	replay() {
-		this.reset();
+		stopInt();
+		// this.reset();
+		removeAllChilds(cardbox);
+		currLvlCardsArr = [];
+		startGameTime = 0;
+		endGameTime = 0;
+		gameTimeRec = 0;
+		this.moves = 0;
+		movesTxt.textContent = this.moves;
+		this.complete = 0;
+		achievementTxt.textContent = this.complete;
+		//
 		this.currentlvl = 1;
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
 		this.gamerecord = {};
@@ -59,6 +70,7 @@ class User {
 		coinsTxt.textContent = this.coins;
 		time = gameLvl[player.currentlvl].time;
 		timeTxt.textContent = timeFormater(time);
+		timerInt();
 		addCards(gameLvl[this.currentlvl].cards);
 		startGameTime = new Date().getTime();
 	}
@@ -90,9 +102,12 @@ class User {
 	}
 
 	nextLevel() {
+		stopInt();
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
+		console.log(time);
 		time = gameLvl[player.currentlvl].time;
 		timeTxt.textContent = timeFormater(time);
+		timerInt();
 		addCards(gameLvl[this.currentlvl].cards);
 		startGameTime = new Date().getTime();
 	}
@@ -115,7 +130,7 @@ const gameLvl = {
 		cards: 6,
 		pairs: 3,
 		time: 30,
-		speed: 1400,
+		speed: 1300,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -124,8 +139,8 @@ const gameLvl = {
 		level: "Level 3",
 		cards: 6,
 		pairs: 3,
-		time: 600,
-		speed: 1300,
+		time: 60,
+		speed: 1100,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -134,8 +149,8 @@ const gameLvl = {
 		level: "Level 4",
 		cards: 6,
 		pairs: 3,
-		time: 600,
-		speed: 1000,
+		time: 60,
+		speed: 900,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -144,8 +159,8 @@ const gameLvl = {
 		level: "Level 5",
 		cards: 6,
 		pairs: 3,
-		time: 600,
-		speed: 800,
+		time: 120,
+		speed: 700,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -164,7 +179,7 @@ let gameTimeRec = 0;
 let time;
 time = gameLvl[player.currentlvl].time;
 
-const timerInt = setInterval(countDown, 1000);
+let gameInterval;
 
 const cardbox = document.getElementById("cardbox");
 const h1LvlTxt = document.getElementById("level");
@@ -175,6 +190,7 @@ const timeTxt = document.getElementById("time");
 const replayBtn = document.getElementById("replayBtn");
 const soundBtn = document.getElementById("soundBtn");
 
+coinsTxt.textContent = startingCoins;
 achievementTxt.textContent = `${player.complete} / ${
 	gameLvl[player.currentlvl].pairs
 }`;
@@ -190,6 +206,14 @@ const wrongAns = new Audio("audio/wronganswerbuzz.wav");
 const correctAns = new Audio("audio/correctanswer.wav");
 const timesup = new Audio("audio/timesup.mp3");
 const bonus = new Audio("audio/prize.wav");
+
+const timerInt = () => {
+	gameInterval = setInterval(timeCount, 1000);
+};
+
+const stopInt = () => {
+	clearInterval(gameInterval);
+};
 
 /***  Functions: >>-f->> randCardsArr (set no.) return for random cardID into an array (cards162: 0 to 161) *2 sets and >>-f->> shuffleArray(arr) shuffle the cards e.g: randCardsArr(2):[5, 59, 5, 59]  ***/
 
@@ -244,7 +268,7 @@ function addCards(num) {
 
 function startPlay() {
 	addCards(gameLvl[player.currentlvl].cards);
-
+	timerInt();
 	startGameTime = new Date().getTime();
 }
 
@@ -256,11 +280,16 @@ function timeFormater(time) {
 	return `0${min}:${sec}`;
 }
 
-function countDown() {
+function timeCount() {
 	timeTxt.textContent = timeFormater(time);
 	time--;
-	if (time === 0 || player.coins <= 0) {
-		clearInterval(timerInt);
+	console.log(time);
+	if (
+		time === 0 ||
+		player.coins === 0 ||
+		player.coins - gameLvl[player.currentlvl].damages < 0
+	) {
+		stopInt();
 		if (player.sound) {
 			timesup.play();
 		}
