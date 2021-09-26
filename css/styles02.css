@@ -5,13 +5,17 @@
 }
 
 body {
-	background-image: url("/images/bkgimg.jpgs");
+	background-image: url("images/bkgimg.jpg");
 	background-repeat: no-repeat, repeat;
+	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
 	font-family: "Acme", sans-serif;
 	color: royalblue;
 	text-align: center;
+}
+
+.bg {
 }
 
 header {
