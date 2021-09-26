@@ -205,6 +205,7 @@ const flipping = new Audio("audio/flipping.wav");
 const wrongAns = new Audio("audio/wronganswerbuzz.wav");
 const correctAns = new Audio("audio/correctanswer.wav");
 const timesup = new Audio("audio/timesup.mp3");
+const timercd = new Audio("audio/timerclock10s.mp3");
 const bonus = new Audio("audio/prize.wav");
 
 const timerInt = () => {
@@ -284,6 +285,9 @@ function timeCount() {
 	timeTxt.textContent = timeFormater(time);
 	time--;
 	console.log(time);
+	if (time === 10 && player.sound === true) {
+		timercd.play();
+	}
 	if (
 		time === 0 ||
 		player.coins === 0 ||
