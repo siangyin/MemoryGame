@@ -4,11 +4,11 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="icon" href="images/icon01.png" />
-
 		<title>Playing</title>
-		<link rel="stylesheet" type="text/css" href="styles01.css" />
+		<link rel="stylesheet" type="text/css" href="styles.css" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,33 +16,42 @@
 			href="https://fonts.googleapis.com/css2?family=Acme&family=Fredoka+One&display=swap"
 			rel="stylesheet"
 		/>
-		<!-- 
-			font-family: 'Acme', sans-serif;
-			font-family: 'Fredoka One', cursive;
-			 -->
 	</head>
 	<body>
-		<img id="logo" src="images/logo01.png" alt="game logo" />
-
-		<form class="center">
-			<label for="playername">Player name:</label><br />
-			<input type="text" id="playername" name="playername" /><br />
-		</form>
-		<a href="./play.html" onclick="getPlayerName()">
-			<img id="playbtn" src="./images/playbutton.png" alt="playbutton" />
-		</a>
-
-		<audio
+		<section class="landinglayer">
+			<img id="logo" src="images/logo01.png" alt="game logo" />
+			<form class="center">
+				<label for="playername">Player name:</label><br />
+				<input type="text" id="playername" name="playername" /><br />
+			</form>
+			<a href="./play.html" onclick="getPlayerName()">
+				<img id="playbtn" src="./images/playbutton.png" alt="playbutton" />
+			</a>
+		</section>
+		<main>
+			<section class="container">
+				<header class="box-1">
+					<h2 id="level">Level 1</h2>
+					<h2>💰 Coins <span id="coins"></span></h2>
+					<h2>🏆 Achievement <span id="achievement"></span></h2>
+					<h2> 🔄 Moves <span id="moves">0</span></h2>
+					<h2>⌛️ Time <span id="time">00:00</span></h2>
+				</header>
+				<articles class="box-2" id="cardbox"></articles>
+			</section>
+		</main>
+		<footer class="container">
+			<nav> <a href="./index.html">🔙 Exit</a></nav>
+			<nav id="replayBtn"> 🔁 Replay again </nav> 
+			<nav id="soundBtn">🔔</nav>
+			
+			<audio id="bkgmusic"
 			controls
-			id="music"
 			src="https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic0.mp3"
 			preload="auto"
 			autoplay
-			loop
-		>
-			Your browser does not support the audio element.
-		</audio>
-
-		<script src="main.js"></script>
+			loop>
+		</footer>
+		<script src="app.js"></script>
 	</body>
 </html>

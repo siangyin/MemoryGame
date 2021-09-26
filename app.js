@@ -202,7 +202,7 @@ achievementTxt.textContent = `${player.complete} / ${
 replayBtn.addEventListener("click", player.replay);
 
 document.addEventListener("DOMContentLoaded", function () {
-	startPlay();
+	// commented out for landing page layering -> startPlay();
 });
 
 const flipping = new Audio("audio/flipping.wav");
