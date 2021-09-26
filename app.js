@@ -54,6 +54,8 @@ class User {
 		stopInt();
 		// this.reset();
 		removeAllChilds(cardbox);
+		stop(timesup);
+		stop(timercd)
 		currLvlCardsArr = [];
 		startGameTime = 0;
 		endGameTime = 0;
@@ -102,6 +104,8 @@ class User {
 	}
 
 	nextLevel() {
+		stop(timesup);
+		stop(timercd)
 		stopInt();
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
 		console.log(time);
@@ -364,6 +368,14 @@ function xMatch() {
 	player.addMoves();
 	player.deductCoins(gameLvl[player.currentlvl].damages);
 }
+
+/*>>-f->>  Function: stop audio - to reset ***/
+
+function stop(audio){
+	
+	audio.pause();
+	audio.currentTime = 0;}
+
 
 /*** DOM events ***/
 
