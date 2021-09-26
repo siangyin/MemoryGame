@@ -205,7 +205,7 @@ const flipping = new Audio("audio/flipping.wav");
 const wrongAns = new Audio("audio/wronganswerbuzz.wav");
 const correctAns = new Audio("audio/correctanswer.wav");
 const timesup = new Audio("audio/timesup.mp3");
-const timercd = new Audio("audio/timerclock10s.mp3");
+const timercd = new Audio("audio/timerclock10s.wav");
 const bonus = new Audio("audio/prize.wav");
 
 const timerInt = () => {
