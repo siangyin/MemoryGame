@@ -5,7 +5,7 @@
 }
 
 body {
-	background-image: url("images/bkgimg.jpg");
+	background-image: url("../images/bkgimg.jpg");
 	background-repeat: no-repeat, repeat;
 	background-position: center;
 	background-attachment: fixed;
@@ -13,6 +13,7 @@ body {
 	font-family: "Acme", sans-serif;
 	color: royalblue;
 	text-align: center;
+	/* background: rgba(0, 0, 0, 0.5); Black see-through */
 }
 
 .bg {
