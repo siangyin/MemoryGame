@@ -1,10 +1,3 @@
-/*** >> Function to get player name input ***/
-
-// function getPlayerName() {
-// 	const playername = document.getElementById("playername").value;
-// 	console.log(playername);
-// }
-
 //--- DATA Objects for Games level structures & player ***/
 // class for player setup
 class User {
@@ -55,7 +48,7 @@ class User {
 		// this.reset();
 		removeAllChilds(cardbox);
 		stop(timesup);
-		stop(timercd)
+		stop(timercd);
 		currLvlCardsArr = [];
 		startGameTime = 0;
 		endGameTime = 0;
@@ -105,7 +98,7 @@ class User {
 
 	nextLevel() {
 		stop(timesup);
-		stop(timercd)
+		stop(timercd);
 		stopInt();
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
 		console.log(time);
@@ -173,6 +166,7 @@ const gameLvl = {
 
 // -- GLOBAL variables
 let startingCoins = 20;
+let playername = getPlayerName;
 const player = new User("lee");
 
 let currLvlCardsArr;
@@ -277,6 +271,14 @@ function startPlay() {
 	startGameTime = new Date().getTime();
 }
 
+/*** >> Function to get player name input ***/
+
+function getPlayerName() {
+	playername = document.getElementById("playername").value;
+	console.log(playername);
+	return playername;
+}
+
 /*>>-f->>  Function: for timer countdown & time:format  ***/
 
 function timeFormater(time) {
@@ -371,11 +373,10 @@ function xMatch() {
 
 /*>>-f->>  Function: stop audio - to reset ***/
 
-function stop(audio){
-	
+function stop(audio) {
 	audio.pause();
-	audio.currentTime = 0;}
-
+	audio.currentTime = 0;
+}
 
 /*** DOM events ***/
 
