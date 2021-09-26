@@ -14,7 +14,7 @@ class User {
 		this.coins = startingCoins;
 		this.complete = 0;
 		this.moves = 0;
-		this.sound = true;
+		this.sound = false;
 		this.gamerecord = {};
 	}
 
@@ -141,8 +141,8 @@ const gameLvl = {
 	},
 	3: {
 		level: "Level 3",
-		cards: 6,
-		pairs: 3,
+		cards: 8,
+		pairs: 4,
 		time: 60,
 		speed: 1100,
 		earning: 20,
@@ -151,8 +151,8 @@ const gameLvl = {
 	},
 	4: {
 		level: "Level 4",
-		cards: 6,
-		pairs: 3,
+		cards: 10,
+		pairs: 5,
 		time: 60,
 		speed: 900,
 		earning: 20,
@@ -161,8 +161,8 @@ const gameLvl = {
 	},
 	5: {
 		level: "Level 5",
-		cards: 6,
-		pairs: 3,
+		cards: 20,
+		pairs: 10,
 		time: 120,
 		speed: 700,
 		earning: 20,

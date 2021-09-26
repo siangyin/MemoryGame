@@ -13,12 +13,22 @@ body {
 	background-size: cover;
 	font-family: "Acme", sans-serif;
 	color: royalblue;
+	font-size: 16px;
+	line-height:1.7;
 	text-align: center;
-	/* background: rgba(0, 0, 0, 0.5); Black see-through */
+	
 }
 
 .bg {
-}
+	height:95vh;
+	background-color: rgba(255, 255, 250, 0.3);
+	
+	/* white layer see-through */
+	position: relative;
+	top: 0;
+	left: 0;
+	border: 15px solid purple;
+  }
 
 header {
 	display: inline-flex;
@@ -35,8 +45,13 @@ span {
 	background-color: limegreen;
 }
 
-.container {
+section.container {
 	display: flexbox;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	border: green solid 3px;
+	width: 95vh
 }
 
 .box-1 {
