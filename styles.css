@@ -97,73 +97,52 @@ input {
 section#mainplay {
 	
 	width:100vw;
+	height: 100vh;
 	position: relative;
 	top: 0;
 	left: 0;
-	height: 100vh;
-	border: yellowgreen solid 13px;
+	
+	justify-content: space-evenly;	
+	padding: 2.5%;
+	
 	/* use display none to hide the main play stage */
 	/* display: none; */ 
+	border: blue solid 1px; /* to be remove */
 
 }
 
-/* 
-section.container {
-	display: flexbox;
-	position: absolute;
-	top: 5%;
-	left: 5%;
-	border: yellow solid 30px;
-	width: 95vw;
-} */
-
-
-
 header {
 	display:inline-flex;
-	border: red solid 3px;
 	width:95vw;
 	order: 1;
-	justify-content: space-evenly;
-	
+	justify-content: space-evenly;	
+	border: red solid 1px; /* to be remove */
+	-webkit-flex-direction: column; 
+	flex-direction: column; 
+	/* float: left; */
 	/* height: 15vh; */
 	
 }
 
-.column1, .column2 {
+.row1, .row2 {
 	display:inline-flex;
-	justify-content: space-evenly;
 	
 }
 
 p, h2{
-	border: red solid 3px;
-	width:100vw;
-}
-
-/* h2{
-	border: grey solid 3px;
-	background-color: lightblue;
-	flex:1
-	font-family: 'Luckiest Guy'
-	font-size: 2em;
-	order:2;
 	
-	width:100vw;
-} */
-
-.box-1 { 
-	-webkit-flex-direction: column; 
-	flex-direction: column; 
-	float: left;
+	width:20%;
+	color: #AE45FC;
+	border: purple solid 1px;  /* to be remove */
 }
 
-.box-2 {
-	/* flex: 3; */
+
+#cardbox {
 	order: 2;
-	display: inline-flex; /* testing out:  */
+	display: inline-flex; 
 	flex-wrap: wrap;
 	justify-content: center;
+	padding-top:5%;
 }
 
 div {
@@ -172,7 +151,7 @@ div {
 	width: 100px;
 	margin: 3px;
 	border: 3px solid #9fcafb;
-	cursor: url("images/tap.png") 25 15, pointer;
+	/* cursor: url("images/tap1.png") , auto; */
 }
 
 footer {
@@ -208,3 +187,27 @@ img.cutie {
 audio {
 	display: none;
 }
+
+
+
+/* 
+section.container {
+	display: flexbox;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	border: yellow solid 30px;
+	width: 95vw;
+} */
+
+
+/* h2{
+	border: grey solid 3px;
+	background-color: lightblue;
+	flex:1
+	font-family: 'Luckiest Guy'
+	font-size: 2em;
+	order:2;
+	
+	width:100vw;
+} */
