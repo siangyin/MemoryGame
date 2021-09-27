@@ -24,7 +24,7 @@ body {
 	position: relative;
 	top: 0;
 	left: 0;
-	display: none;
+	display: flexbox;
 	/* to be used for hiding landing page after playbtn clicked */
 }
 
@@ -93,7 +93,7 @@ section#mainplay {
 	justify-content: space-evenly;
 	padding: 2.5%;
 	/* use display none to hide the main play stage */
-	display: flexbox;
+	display: none;
 }
 
 header {
@@ -149,24 +149,26 @@ footer {
 	bottom: 0;
 	width: 100vw;
 	height: 20vh;
-	display: inline-flex;
+	display: none;
 	justify-content: center;
-	background-color: yellow;
 }
 
 ul#gamelog {
 	list-style-type: none;
-	margin: auto;
-	padding: 0;
+	margin: 10px;
+	padding: 2.5px;
 	text-align: left;
-	flex: 3;
+	flex: 3.5;
+	background-color: rgba(255, 255, 87, 0.5);
+	border: white solid 2px;
+	border-radius: 25px;
 }
 
 footer nav {
 	color: grey;
 	justify-content: space-between;
 	align-self: flex-end;
-	padding: 25px 15px;
+	padding: 25px 3px;
 	flex: 1;
 }
 footer nav:hover {

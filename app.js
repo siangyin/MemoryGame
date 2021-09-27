@@ -188,6 +188,9 @@ const replayBtn = document.getElementById("replayBtn");
 const soundBtn = document.getElementById("soundBtn");
 const landingPage = document.getElementById("landinglayer");
 const gameLogUl = document.getElementById("gamelog");
+const playingSection = document.getElementById("mainplay");
+const footer = document.getElementsByTagName("footer");
+const mainPlayBtn = document.getElementById("playbtn");
 
 coinsTxt.textContent = startingCoins;
 achievementTxt.textContent = `${player.complete} / ${
@@ -388,6 +391,14 @@ function gameLog(text) {
 }
 
 /*** DOM events ***/
+
+mainPlayBtn.addEventListener("click", () => {
+	getPlayerName();
+	landingPage.style.display = "none";
+	playingSection.style.display = "flexbox";
+	footer.style.display = "inline-flexbox";
+	startPlay();
+});
 
 cardbox.addEventListener("click", (e) => {
 	if (player.sound) {
