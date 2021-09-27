@@ -7,7 +7,7 @@ class User {
 		this.coins = startingCoins;
 		this.complete = 0;
 		this.moves = 0;
-		this.sound = false;
+		this.sound = true;
 		this.gamerecord = {};
 	}
 
