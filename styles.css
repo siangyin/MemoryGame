@@ -13,8 +13,7 @@ body {
 	background-size: cover;
 	font-family: "Acme", sans-serif;
 	color: #fda4e2;
-	font-size: larger;
-	line-height: 1.8;
+	line-height: 1.5;
 	text-align: center;
 }
 
@@ -125,24 +124,38 @@ header {
 	border: red solid 3px;
 	width:95vw;
 	order: 1;
+	justify-content: space-evenly;
+	
 	/* height: 15vh; */
 	
 }
 
-
-h2{
-	border: yellowgreen solid 3px;
-	flex:1
-}
-p {
-	border: yellowgreen solid 3px;
-	background-color: lightblue;
-
-}
-
-.box-1 {
-	/* flex: 1; */
+.column1, .column2 {
+	display:inline-flex;
+	justify-content: space-evenly;
 	
+}
+
+p, h2{
+	border: red solid 3px;
+	width:100vw;
+}
+
+/* h2{
+	border: grey solid 3px;
+	background-color: lightblue;
+	flex:1
+	font-family: 'Luckiest Guy'
+	font-size: 2em;
+	order:2;
+	
+	width:100vw;
+} */
+
+.box-1 { 
+	-webkit-flex-direction: column; 
+	flex-direction: column; 
+	float: left;
 }
 
 .box-2 {
@@ -150,6 +163,7 @@ p {
 	order: 2;
 	display: inline-flex; /* testing out:  */
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 div {
