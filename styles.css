@@ -24,23 +24,19 @@ body {
 	position: relative;
 	top: 0;
 	left: 0;
-	background-color: rgba(255, 255, 250, 0.15); /* white layer see-through */
-	display: none; /* to be used for hiding landing page after playbtn clicked */
-	border: 15px solid whitesmoke; /* to be remove */
+	/* display: none;  */
+	/* to be used for hiding landing page after playbtn clicked */
 }
 
-.center {
+form {
 	width: 100%;
 	height: 15%;
-	/* text-align: center; */ /* to be remove as it worked fine without it */
-	/* margin: auto; */ /* to be remove as it worked fine without it */
-	border: 10px solid red; /* to be remove */
 }
 
 input {
 	border: #fda4e2 solid 5px;
 	height: 50%;
-	width: 80%;
+	width: 50%;
 }
 
 #playbtn {
@@ -60,16 +56,14 @@ input {
 }
 
 #logo {
-	max-width: 50%;
-	height: 38vh
-	margin: 5% auto 2% auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	max-width: 70%;
 	position: relative;
 	border: 10px solid red;
 	animation-name: animate;
 	animation-duration: 4s;
 	animation-iteration-count: infinite;
-	/* height: auto; */
-	/* display: block; */
 }
 
 @keyframes animate {
@@ -90,59 +84,56 @@ input {
 	}
 }
 
-/* testing landing stuff above */
-
-/* testing : the following original style */
+/* playing area style */
 
 section#mainplay {
-	
-	width:100vw;
+	width: 100vw;
 	height: 100vh;
 	position: relative;
 	top: 0;
 	left: 0;
-	
-	justify-content: space-evenly;	
+	justify-content: space-evenly;
 	padding: 2.5%;
-	
 	/* use display none to hide the main play stage */
-	/* display: none; */ 
-	border: blue solid 1px; /* to be remove */
-
+	display: none;
 }
 
 header {
-	display:inline-flex;
-	width:95vw;
+	display: inline-flex;
+	width: 95vw;
 	order: 1;
-	justify-content: space-evenly;	
-	border: red solid 1px; /* to be remove */
-	-webkit-flex-direction: column; 
-	flex-direction: column; 
+	justify-content: space-evenly;
+	-webkit-flex-direction: column;
+	flex-direction: column;
 	/* float: left; */
 	/* height: 15vh; */
-	
 }
 
-.row1, .row2 {
-	display:inline-flex;
-	
+.row1,
+.row2 {
+	display: inline-flex;
 }
 
-p, h2{
-	
-	width:20%;
-	color: #AE45FC;
-	border: purple solid 1px;  /* to be remove */
+p,
+h2 {
+	width: 20%;
+	color: #ae45fc;
 }
 
+h2 {
+	border-radius: 25px;
+	background: #ae45fc;
+	color: white;
+	margin: 1%;
+	width: 18%;
+}
 
 #cardbox {
 	order: 2;
-	display: inline-flex; 
+	display: inline-flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding-top:5%;
+	padding-top: 5%;
 }
 
 div {
@@ -150,8 +141,7 @@ div {
 	height: 100px;
 	width: 100px;
 	margin: 3px;
-	border: 3px solid #9fcafb;
-	/* cursor: url("images/tap1.png") , auto; */
+	border: 3px solid #fda4e2;
 }
 
 footer {
@@ -160,18 +150,22 @@ footer {
 	left: 0;
 	bottom: 0;
 	width: 100vw;
-	display:inline-flex;
-	background-color: rgba(250, 250, 250, 0.3);
-	justify-content: flex-end;
+	display: none;
+	/* inline-flex; */
+	justify-content: center;
 }
 
 footer nav {
-	color: black;
-	border: yellowgreen solid 3px;
-	background-color: lightblue;
-	
-
+	color: grey;
+	justify-content: space-between;
+	padding: 0.5% 5%;
 }
+footer nav:hover {
+	color: #ae45fc;
+	transform: translateY(-10px);
+	font-size: larger;
+}
+
 img.hide {
 	max-width: 100%;
 	height: auto;
@@ -183,12 +177,9 @@ img.cutie {
 	height: auto;
 }
 
-
 audio {
 	display: none;
 }
-
-
 
 /* 
 section.container {
@@ -199,7 +190,6 @@ section.container {
 	border: yellow solid 30px;
 	width: 95vw;
 } */
-
 
 /* h2{
 	border: grey solid 3px;

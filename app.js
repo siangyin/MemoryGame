@@ -407,13 +407,13 @@ cardbox.addEventListener("click", (e) => {
 });
 
 soundBtn.addEventListener("click", (e) => {
-	if (e.target.textContent === "🔔") {
+	if (e.target.textContent === "🔔 Music on") {
 		player.sound = false;
-		e.target.textContent = "🔕";
+		e.target.textContent = "🔕 Music off";
 		document.getElementById("bkgmusic").muted = true;
 	} else {
 		player.sound = true;
-		e.target.textContent = "🔔";
+		e.target.textContent = "🔔 Music on";
 		document.getElementById("bkgmusic").muted = false;
 	}
 });
