@@ -149,8 +149,8 @@ footer {
 	bottom: 0;
 	width: 100vw;
 	height: 20vh;
-	display: none;
 	justify-content: center;
+	display: none;
 }
 
 ul#gamelog {
