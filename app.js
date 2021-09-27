@@ -189,7 +189,7 @@ const soundBtn = document.getElementById("soundBtn");
 const landingPage = document.getElementById("landinglayer");
 const gameLogUl = document.getElementById("gamelog");
 const playingSection = document.getElementById("mainplay");
-const footer = document.getElementsByTagName("footer");
+const footer = document.getElementById("footer");
 const mainPlayBtn = document.getElementById("playbtn");
 
 coinsTxt.textContent = startingCoins;
@@ -270,11 +270,19 @@ function addCards(num) {
 // >>-f->>  Function: playBtn click to start play
 
 function startPlay() {
+	getPlayerName();
 	landingPage.remove();
+	playingSection.style.display = "flexbox";
+	footer.style.display = "inline-flexbox";
 	addCards(gameLvl[player.currentlvl].cards);
 	timerInt();
 	startGameTime = new Date().getTime();
 }
+
+mainPlayBtn.addEventListener("click", () => {
+	// landingPage.style.display = "none";
+	// startPlay();
+});
 
 /*** >> Function to get player name input ***/
 
@@ -391,14 +399,6 @@ function gameLog(text) {
 }
 
 /*** DOM events ***/
-
-mainPlayBtn.addEventListener("click", () => {
-	getPlayerName();
-	landingPage.style.display = "none";
-	playingSection.style.display = "flexbox";
-	footer.style.display = "inline-flexbox";
-	startPlay();
-});
 
 cardbox.addEventListener("click", (e) => {
 	if (player.sound) {
