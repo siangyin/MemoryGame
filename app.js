@@ -39,7 +39,9 @@ class User {
 		this.moves = 0;
 		movesTxt.textContent = this.moves;
 		this.complete = 0;
-		achievementTxt.textContent = this.complete;
+		achievementTxt.textContent = `${this.complete} / ${
+			gameLvl[this.currentlvl].pairs
+		}`;
 		stopInt();
 	}
 
@@ -56,7 +58,9 @@ class User {
 		this.moves = 0;
 		movesTxt.textContent = this.moves;
 		this.complete = 0;
-		achievementTxt.textContent = this.complete;
+		achievementTxt.textContent = `${this.complete} / ${
+			gameLvl[this.currentlvl].pairs
+		}`;
 		//
 		this.currentlvl = 1;
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
@@ -273,7 +277,7 @@ function startPlay() {
 	getPlayerName();
 	landingPage.remove();
 	playingSection.style.display = "flexbox";
-	footer.style.display = "inline-flexbox";
+	footer.style.visibility = "visible";
 	addCards(gameLvl[player.currentlvl].cards);
 	timerInt();
 	startGameTime = new Date().getTime();

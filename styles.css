@@ -93,7 +93,7 @@ section#mainplay {
 	justify-content: space-evenly;
 	padding: 2.5%;
 	/* use display none to hide the main play stage */
-	display: none;
+	display: flexbox;
 }
 
 header {
@@ -150,13 +150,14 @@ footer {
 	width: 100vw;
 	height: 20vh;
 	justify-content: center;
-	display: none;
+	display: inline-flex;
+	visibility: hidden;
 }
 
 ul#gamelog {
 	list-style-type: none;
-	margin: 10px;
-	padding: 2.5px;
+	margin: px;
+	padding: 10px 20px;
 	text-align: left;
 	flex: 3.5;
 	background-color: rgba(255, 255, 87, 0.5);
