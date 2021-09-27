@@ -187,6 +187,7 @@ const movesTxt = document.getElementById("moves");
 const timeTxt = document.getElementById("time");
 const replayBtn = document.getElementById("replayBtn");
 const soundBtn = document.getElementById("soundBtn");
+const landingPage = document.getElementById("landinglayer");
 
 coinsTxt.textContent = startingCoins;
 achievementTxt.textContent = `${player.complete} / ${
@@ -263,9 +264,10 @@ function addCards(num) {
 	}
 }
 
-// >>-f->>  Function: start play
+// >>-f->>  Function: playBtn click to start play
 
 function startPlay() {
+	landingPage.remove();
 	addCards(gameLvl[player.currentlvl].cards);
 	timerInt();
 	startGameTime = new Date().getTime();

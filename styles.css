@@ -20,15 +20,13 @@ body {
 
 /* testing : from layering on landing page */
 
-.landinglayer {
+#landinglayer {
 	height: 100vh;
-
 	position: relative;
 	top: 0;
 	left: 0;
 	background-color: rgba(255, 255, 250, 0.15); /* white layer see-through */
-	/* display: none; */ /* to be used for hiding landing page after playbtn clicked */
-
+	display: none; /* to be used for hiding landing page after playbtn clicked */
 	border: 15px solid whitesmoke; /* to be remove */
 }
 
@@ -47,13 +45,13 @@ input {
 }
 
 #playbtn {
+	height: 20vh;
 	/* max-width: 20%; */
 	/* height: auto; */
 	/* margin-left: auto;
 	margin-right: auto; */
-	height: 20vh;
 	/* display: block; */
-	border: 10px solid red;
+	border: 10px solid red; /* to be remove */
 }
 
 #playbtn:hover {
@@ -96,45 +94,61 @@ input {
 /* testing landing stuff above */
 
 /* testing : the following original style */
-header {
-	/* display: inline-flex; */
-	border: yellowgreen solid 3px;
-	height: 10vh;
-	visibility: hidden; /* testing */
+
+section#mainplay {
+	
+	width:100vw;
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	border: yellowgreen solid 13px;
+	/* use display none to hide the main play stage */
+	/* display: none; */ 
+
 }
 
-/* not working, cannot hide main content first */
-main.container {
-	/* display: none; */
-}
-
-audio {
-	display: none;
-}
-
-span {
-	border: yellowgreen solid 3px;
-	background-color: limegreen;
-}
-
+/* 
 section.container {
 	display: flexbox;
 	position: absolute;
 	top: 5%;
 	left: 5%;
-	border: green solid 3px;
-	width: 95vh;
+	border: yellow solid 30px;
+	width: 95vw;
+} */
+
+
+
+header {
+	display:inline-flex;
+	border: red solid 3px;
+	width:95vw;
+	order: 1;
+	/* height: 15vh; */
+	
+}
+
+
+h2{
+	border: yellowgreen solid 3px;
+	flex:1
+}
+p {
+	border: yellowgreen solid 3px;
+	background-color: lightblue;
+
 }
 
 .box-1 {
-	flex: 1;
-	order: 1;
+	/* flex: 1; */
+	
 }
 
 .box-2 {
-	flex: 3;
+	/* flex: 3; */
 	order: 2;
-	/* testing out: display: inline-flex; */
+	display: inline-flex; /* testing out:  */
 	flex-wrap: wrap;
 }
 
@@ -148,17 +162,23 @@ div {
 }
 
 footer {
-	flex-direction: row;
 	flex: 3;
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	width: 100%;
+	width: 100vw;
+	display:inline-flex;
 	background-color: rgba(250, 250, 250, 0.3);
-	color: #ae45fc;
-	justify-content: center;
+	justify-content: flex-end;
 }
 
+footer nav {
+	color: black;
+	border: yellowgreen solid 3px;
+	background-color: lightblue;
+	
+
+}
 img.hide {
 	max-width: 100%;
 	height: auto;
@@ -168,4 +188,9 @@ img.hide {
 img.cutie {
 	max-width: 100%;
 	height: auto;
+}
+
+
+audio {
+	display: none;
 }

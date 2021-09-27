@@ -18,7 +18,7 @@
 		/>
 	</head>
 	<body>
-		<section class="landinglayer">
+		<section id="landinglayer">
 			<img id="logo" src="images/logo01.png" alt="game logo" />
 			<form class="center">
 				<label for="playername">Player name:</label><br />
@@ -26,18 +26,18 @@
 			</form>
 			<img id="playbtn" src="./images/playbutton.png" alt="playbutton" onclick="getPlayerName()"/>
 		</section>
-		<main>
-			<section class="container">
+		
+		<section id="mainplay" class="container">
 				<header class="box-1">
 					<h2 id="level">Level 1</h2>
-					<h2>💰 Coins <span id="coins"></span></h2>
-					<h2>🏆 Achievement <span id="achievement"></span></h2>
-					<h2> 🔄 Moves <span id="moves">0</span></h2>
-					<h2>⌛️ Time <span id="time">00:00</span></h2>
+					<h2>💰 Coins <p id="coins"></p></h2>
+					<h2>🏆 Achievement <p id="achievement"></p></h2>
+					<h2> 🔄 Moves <p id="moves">0</p></h2>
+					<h2>⌛️ Time <p id="time">00:00</p></h2>
 				</header>
 				<articles class="box-2" id="cardbox"></articles>
-			</section>
-		</main>
+		</section>
+		
 		<footer class="container">
 			<!-- <nav> <a href="./index.html">🔙 Exit</a></nav> -->
 			<nav id="replayBtn"> 🔁 Replay again </nav> 
