@@ -12,46 +12,48 @@ body {
 	height: 100%;
 	background-size: cover;
 	font-family: "Acme", sans-serif;
-	color: royalblue;
-	font-size: 16px;
-	line-height: 1.7;
+	color: #fda4e2;
+	font-size: larger;
+	line-height: 1.8;
 	text-align: center;
 }
 
 /* testing : from layering on landing page */
 
 .landinglayer {
-	height: 90vh;
-	background-color: rgba(255, 255, 250, 0.3);
+	height: 100vh;
 
-	/* white layer see-through */
 	position: relative;
 	top: 0;
 	left: 0;
-	border: 15px solid purple;
+	background-color: rgba(255, 255, 250, 0.15); /* white layer see-through */
+	/* display: none; */ /* to be used for hiding landing page after playbtn clicked */
+
+	border: 15px solid whitesmoke; /* to be remove */
 }
 
 .center {
-	margin: auto;
-	width: max-content;
-	height: 150px;
-	text-align: center;
-	border: 10px solid red;
+	width: 100%;
+	height: 15%;
+	/* text-align: center; */ /* to be remove as it worked fine without it */
+	/* margin: auto; */ /* to be remove as it worked fine without it */
+	border: 10px solid red; /* to be remove */
 }
 
 input {
 	border: #fda4e2 solid 5px;
-	height: 50px;
-	width: 500px;
-	margin: 10px;
+	height: 50%;
+	width: 80%;
 }
 
 #playbtn {
-	max-width: 20%;
-	height: auto;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	/* max-width: 20%; */
+	/* height: auto; */
+	/* margin-left: auto;
+	margin-right: auto; */
+	height: 20vh;
+	/* display: block; */
+	border: 10px solid red;
 }
 
 #playbtn:hover {
@@ -61,14 +63,16 @@ input {
 }
 
 #logo {
-	max-width: 100%;
-	height: auto;
-	display: block;
-	margin: 5% auto 5% auto;
+	max-width: 50%;
+	height: 38vh
+	margin: 5% auto 2% auto;
 	position: relative;
+	border: 10px solid red;
 	animation-name: animate;
 	animation-duration: 4s;
 	animation-iteration-count: infinite;
+	/* height: auto; */
+	/* display: block; */
 }
 
 @keyframes animate {
@@ -150,7 +154,7 @@ footer {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: #ffd2de;
+	background-color: rgba(250, 250, 250, 0.3);
 	color: #ae45fc;
 	justify-content: center;
 }
