@@ -24,43 +24,46 @@
 				<label for="playername">Player name:</label><br />
 				<input type="text" id="playername" name="playername" /><br />
 			</form>
-			<img id="playbtn" onclick="startPlay()" src="./images/playbutton.png" alt="playbutton"/>
+			<img
+				id="playbtn"
+				onclick="startPlay()"
+				src="./images/playbutton.png"
+				alt="playbutton"
+			/>
 		</section>
-		
-		<section id="mainplay" class="container">
-				<header class="box-1">
-					<article class="row1">
-						<p>🏆Level</p>
-						<p>💰Coins</p>
-						<p>🎯Cards</p>
-						<p>🔄Moves</p>
-						<p>⌛️Time</p>
-					</article>
-					<article class="row2">	
-						<h2 id="level">Level 1</h2>
-						<h2 id="coins"></h2>
-						<h2 id="achievement"></h2>
-						<h2 id="moves">0</h2>
-						<h2 id="time">00:00</h2>
 
-					</article>
-				
-				</header>
-				<articles class="box-2" id="cardbox"></articles>
+		<section id="mainplay" class="container">
+			<header class="box-1">
+				<article class="row1">
+					<p>🏆Level</p>
+					<p>💰Coins</p>
+					<p>🎯Cards</p>
+					<p>🔄Moves</p>
+					<p>⌛️Time</p>
+				</article>
+				<article class="row2">
+					<h2 id="level">Level 1</h2>
+					<h2 id="coins"></h2>
+					<h2 id="achievement"></h2>
+					<h2 id="moves">0</h2>
+					<h2 id="time">00:00</h2>
+				</article>
+			</header>
+			<articles class="box-2" id="cardbox"></articles>
 		</section>
 
 		<footer id="footer" class="container">
-			<ul id="gamelog"l></ul>
+			<ul id="gamelog" l></ul>
 			<!-- <nav> <a href="./index.html">🔙 Exit</a></nav> -->
-			<nav id="replayBtn"> 🔁 Replay again </nav> 
+			<nav id="replayBtn">🔁 Replay again</nav>
 			<nav id="soundBtn">🔔 Music on</nav>
-			
-			<audio id="bkgmusic"
+
+			<!-- <audio id="bkgmusic"
 			controls
 			src="https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic0.mp3"
 			preload="auto"
 			autoplay
-			loop>
+			loop> -->
 		</footer>
 		<script src="app.js"></script>
 	</body>
