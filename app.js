@@ -78,7 +78,7 @@ class User {
 		endGameTime = new Date().getTime();
 		gameTimeRec = parseInt((endGameTime - startGameTime) / 1000);
 
-		console.log(
+		gameLog(
 			`Good Job, you have completed Level ${this.currentlvl} in ${gameTimeRec} sec`
 		);
 
@@ -87,7 +87,7 @@ class User {
 		coinsTxt.textContent = this.coins;
 
 		if (this.currentlvl === Object.keys(gameLvl).length) {
-			console.log("Well Done, you have completed all levels");
+			gameLog("Well Done, you have completed all levels");
 			this.reset();
 		} else {
 			this.currentlvl++;
@@ -101,7 +101,6 @@ class User {
 		stop(timercd);
 		stopInt();
 		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
-		console.log(time);
 		time = gameLvl[player.currentlvl].time;
 		timeTxt.textContent = timeFormater(time);
 		timerInt();
@@ -188,6 +187,7 @@ const timeTxt = document.getElementById("time");
 const replayBtn = document.getElementById("replayBtn");
 const soundBtn = document.getElementById("soundBtn");
 const landingPage = document.getElementById("landinglayer");
+const gameLogUl = document.getElementById("gamelog");
 
 coinsTxt.textContent = startingCoins;
 achievementTxt.textContent = `${player.complete} / ${
@@ -277,7 +277,7 @@ function startPlay() {
 
 function getPlayerName() {
 	playername = document.getElementById("playername").value;
-	console.log(playername);
+	gameLog(`Hi ${playername}`);
 	return playername;
 }
 
@@ -292,7 +292,6 @@ function timeFormater(time) {
 function timeCount() {
 	timeTxt.textContent = timeFormater(time);
 	time--;
-	console.log(time);
 	if (time === 10 && player.sound === true) {
 		timercd.play();
 	}
@@ -306,7 +305,7 @@ function timeCount() {
 			timesup.play();
 		}
 
-		console.log("GAME OVER");
+		gameLog("Game Over");
 	}
 	timeTxt.textContent = timeFormater(time);
 }
@@ -378,6 +377,14 @@ function xMatch() {
 function stop(audio) {
 	audio.pause();
 	audio.currentTime = 0;
+}
+
+/*>>-f->>  Function: append text to game log ***/
+
+function gameLog(text) {
+	let li = document.createElement("li");
+	li.textContent = text;
+	gameLogUl.appendChild(li);
 }
 
 /*** DOM events ***/
