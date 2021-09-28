@@ -287,11 +287,6 @@ function startPlay() {
 	}
 }
 
-// mainPlayBtn.addEventListener("click", () => {
-// 	// landingPage.style.display = "none";
-// 	// startPlay();
-// });
-
 /*** >> Function to get player name input ***/
 
 function getPlayerName() {
