@@ -1,12 +1,20 @@
 # Project 1 : Mermory Games 
 
 
-## Game Descriptions
+## Game Instructions
 Test your memory with this memory game. On the game board, there are always two identical images. Start the game by clicking a card, then try to find another card that has the same image as the first. If you can't find a pair, both of the selected cards will be cover back. Try to remember these images as it becomes easier to find pairs the longer you play. When you find a pair they are removed from the board and when you find all the pairs in this memory, you have completed the level and you can move to next level. The higher the level, the more cards are in the game board. 
+
+
+## Game Descriptions
+* There will be unique set of cards pair to be randomly generated for each games level. 
+* Player will be starting off from level 1 with given coins.
+* Player earned coins if same pair of cards are found, and coins will be deducted if it was wrong cards selected.
+* Player are required to find all complete the game within given time.
+
 
 ## Game Link
 
-The Pages site (https://siangyin.github.io/MemoryGame/index.html)
+https://siangyin.github.io/MemoryGame/index.html
 
 
 ## Technologies
@@ -15,19 +23,14 @@ The Pages site (https://siangyin.github.io/MemoryGame/index.html)
 * **Javascript**
 
 
-## The Games Logic 
-* There will be unique set of cards pair to be randomly generated for each games level. 
-* Player will be starting off from level 1 with given coins.
-* Player earned coins if same pair of cards are found, and coins will be deducted if it was wrong cards selected.
-* Player are required to complete the cards set within given time.
-
-
-## Game Instructions
-* Clear all levels to win the game within the given timeline.
+## Game Structure & Approaches
+* Created a user class and have all the common methods saved within the class eg addScore, addMoves, addCoins, deductCoin, etc.
+* As for the cards, I used number value to represent each card images, and having a random number generator to pick random card images number saving into an array. This array will be reshuffled and duplicated. Therefore the index of each card images will be placed accordingly on the card-box area layout eg. [3, 7, 3, 8, 8, 7] the position of 3 in first cards, then followed by 7 and the rest as per array index. 
+* Using eventlistener if user click fourth and fifth card, the hidden images will be displayed and as the same cards were found, the both will be taken out from the card-box playing area. 
 
 
 ## Difficulties Faced
-* Couldnt get the event listener to work, images loaded in live-server using function in js, but unable to load in github. Solving solution is to removed that image and reload a replacement image with lower resolution.
+* Couldnt get the event listener to work, images loaded in live-server using function in js, but unable to load in github. It was found out then it was because of the relatives path I am using "../images/..." in css file in css folder, it do not require "../", instead because images folder is in main area same level as index file so it will work with using "images/...". On the other hand, for the background images I used require more time to load due to the file size, so I also changed to lower resolution images for that.
 * Tried to do a timer countdown for each level but facing issue of the previous timer were also display together and swapping around on timestamp. The page will have multiple timer jumping around. Solving solution found is to save the timer callout function in a variable, then save the stop interval function in another variable. In this case, each level will call for individual timer and stop the timer again when the level ended.
 * Initial plan was to have one landing page and playing page. But I can't figure out how to export and import player name from index.html+module.js to play.html+app.js. At the end I decided to combined both page into one page, landing page as default then after user input the name and clicked play button it will remove the landingpage div group and show the playing area out. 
 * As for the cards click function, when the user clicked the card the target hidden image will be visible, and saving the img no value into temporary array for comparison condition check. But if the user clicked too fast for more than two cards the comparison function will not work and if recalling cardsclicked array outside event listener will get error. To fix this issue, I addded another condition in the eventlistener under the click: if temporary array have two cards now it will ignore the third click.
