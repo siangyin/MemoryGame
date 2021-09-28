@@ -35,6 +35,15 @@ The Pages site (https://siangyin.github.io/MemoryGame/index.html)
 
 
 ## Wireframe Design and Interface
+<table><tr>
+ <td>
+ <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/mainpg.png"/>
+</td>
+ <td>
+ <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/playpg.png"/>
+</td>
+ </tr></table>
+
 1. Arriving at the main pages, user click play to start the game
 <table><tr><td>
  <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/landingpage.png"/>
