@@ -61,6 +61,6 @@ The Pages site (https://siangyin.github.io/MemoryGame/index.html)
 
 
 
-## Additional Info
+
             
       
