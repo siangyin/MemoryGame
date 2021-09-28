@@ -212,7 +212,7 @@ const timesup = new Audio("audio/timesup.mp3");
 const timercd = new Audio("audio/timerclock10s.wav");
 const bonus = new Audio("audio/prize.wav");
 const bkgmusic = new Audio(
-	"https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic0.mp3"
+	"https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic1.mp3"
 );
 
 const timerInt = () => {
