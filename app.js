@@ -47,7 +47,6 @@ class User {
 
 	replay() {
 		stopInt();
-		// this.reset();
 		removeAllChilds(cardbox);
 		stop(timesup);
 		stop(timercd);
@@ -55,23 +54,22 @@ class User {
 		startGameTime = 0;
 		endGameTime = 0;
 		gameTimeRec = 0;
-		this.moves = 0;
-		movesTxt.textContent = this.moves;
-		this.complete = 0;
-		achievementTxt.textContent = `${this.complete} / ${
-			gameLvl[this.currentlvl].pairs
+		player.currentlvl = 1;
+		h1LvlTxt.textContent = gameLvl[player.currentlvl].level;
+		player.moves = 0;
+		movesTxt.textContent = player.moves;
+		player.complete = 0;
+		achievementTxt.textContent = `${player.complete} / ${
+			gameLvl[player.currentlvl].pairs
 		}`;
-		//
-		this.currentlvl = 1;
-		h1LvlTxt.textContent = gameLvl[this.currentlvl].level;
-		this.gamerecord = {};
-		this.coins = startingCoins;
-		coinsTxt.textContent = this.coins;
+		player.gamerecord = {};
+		player.coins = startingCoins;
+		coinsTxt.textContent = player.coins;
 		time = gameLvl[player.currentlvl].time;
 		timeTxt.textContent = timeFormater(time);
-		timerInt();
-		addCards(gameLvl[this.currentlvl].cards);
+		addCards(gameLvl[player.currentlvl].cards);
 		startGameTime = new Date().getTime();
+		timerInt();
 	}
 
 	completeALevel() {
@@ -280,18 +278,19 @@ function startPlay() {
 	getPlayerName();
 	if (player.sound) {
 		bkgmusic.play();
-	// landingPage.remove();
-	playingSection.style.display = "flexbox";
-	footer.style.visibility = "visible";
-	addCards(gameLvl[player.currentlvl].cards);
-	timerInt();
-	startGameTime = new Date().getTime();
+		landingPage.remove();
+		playingSection.style.display = "flexbox";
+		footer.style.visibility = "visible";
+		addCards(gameLvl[player.currentlvl].cards);
+		timerInt();
+		startGameTime = new Date().getTime();
+	}
 }
 
-mainPlayBtn.addEventListener("click", () => {
-	// landingPage.style.display = "none";
-	// startPlay();
-});
+// mainPlayBtn.addEventListener("click", () => {
+// 	// landingPage.style.display = "none";
+// 	// startPlay();
+// });
 
 /*** >> Function to get player name input ***/
 
@@ -437,10 +436,12 @@ soundBtn.addEventListener("click", (e) => {
 	if (e.target.textContent === "🔔 Music on") {
 		player.sound = false;
 		e.target.textContent = "🔕 Music off";
-		document.getElementById("bkgmusic").muted = true;
+		// document.getElementById("bkgmusic").muted = true;
+		bkgmusic.pause();
 	} else {
 		player.sound = true;
 		e.target.textContent = "🔔 Music on";
-		document.getElementById("bkgmusic").muted = false;
+		bkgmusic.play();
+		// document.getElementById("bkgmusic").muted = false;
 	}
 });
