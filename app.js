@@ -214,6 +214,7 @@ const bonus = new Audio("audio/prize.wav");
 const bkgmusic = new Audio(
 	"https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic1.mp3"
 );
+bkgmusic.volume = 0.25;
 
 const timerInt = () => {
 	gameInterval = setInterval(timeCount, 1000);
