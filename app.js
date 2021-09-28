@@ -280,7 +280,7 @@ function startPlay() {
 	getPlayerName();
 	if (player.sound) {
 		bkgmusic.play();
-	landingPage.remove();
+	// landingPage.remove();
 	playingSection.style.display = "flexbox";
 	footer.style.visibility = "visible";
 	addCards(gameLvl[player.currentlvl].cards);
