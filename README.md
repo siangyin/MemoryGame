@@ -54,7 +54,7 @@ The Pages site (https://siangyin.github.io/MemoryGame/index.html)
 
 5. In the event if coin value drop to zero or timeout, a alert will be popped out that player failed in this level with option of to replay this level. After user close the alert, the game restart at the level. 
 
-6. Success alert will popped at the end when all levels are cleared.
+6. Success message at the end when all levels are cleared.
 <table><tr><td>
  <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/completegame.png"/>
 </td></tr></table>
