@@ -89,6 +89,9 @@ class User {
 		coinsTxt.textContent = this.coins;
 
 		if (this.currentlvl === Object.keys(gameLvl).length) {
+			if (player.sound) {
+				victory.play();
+			}
 			gameLog("Well Done, you have completed all levels");
 			this.reset();
 		} else {
@@ -137,8 +140,8 @@ const gameLvl = {
 		level: "Level 3",
 		cards: 8,
 		pairs: 4,
-		time: 60,
-		speed: 1100,
+		time: 40,
+		speed: 1000,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -147,7 +150,7 @@ const gameLvl = {
 		level: "Level 4",
 		cards: 10,
 		pairs: 5,
-		time: 60,
+		time: 50,
 		speed: 900,
 		earning: 20,
 		damages: 10,
@@ -155,9 +158,9 @@ const gameLvl = {
 	},
 	5: {
 		level: "Level 5",
-		cards: 20,
-		pairs: 10,
-		time: 120,
+		cards: 16,
+		pairs: 8,
+		time: 80,
 		speed: 700,
 		earning: 20,
 		damages: 10,
@@ -211,6 +214,7 @@ const correctAns = new Audio("audio/correctanswer.wav");
 const timesup = new Audio("audio/timesup.mp3");
 const timercd = new Audio("audio/timerclock10s.wav");
 const bonus = new Audio("audio/prize.wav");
+const victory = new Audio("audio/victory.mp3");
 const bkgmusic = new Audio(
 	"https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic1.mp3"
 );
