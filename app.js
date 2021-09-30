@@ -94,6 +94,7 @@ class User {
 			}
 			gameLog(`Well Done ${playername}, you have completed all levels`);
 			this.reset();
+			showModal();
 		} else {
 			this.currentlvl++;
 			this.reset();
@@ -121,7 +122,7 @@ const gameLvl = {
 		cards: 4,
 		pairs: 2,
 		time: 20,
-		speed: 1500,
+		speed: 1200,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -130,8 +131,8 @@ const gameLvl = {
 		level: "Level 2",
 		cards: 6,
 		pairs: 3,
-		time: 30,
-		speed: 1300,
+		time: 20,
+		speed: 1000,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -140,8 +141,8 @@ const gameLvl = {
 		level: "Level 3",
 		cards: 8,
 		pairs: 4,
-		time: 40,
-		speed: 1000,
+		time: 20,
+		speed: 900,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -150,8 +151,8 @@ const gameLvl = {
 		level: "Level 4",
 		cards: 10,
 		pairs: 5,
-		time: 50,
-		speed: 900,
+		time: 30,
+		speed: 750,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -160,8 +161,8 @@ const gameLvl = {
 		level: "Level 5",
 		cards: 12,
 		pairs: 6,
-		time: 50,
-		speed: 700,
+		time: 30,
+		speed: 500,
 		earning: 20,
 		damages: 10,
 		bonus: 100,
@@ -196,13 +197,16 @@ const gameLogUl = document.getElementById("gamelog");
 const playingSection = document.getElementById("mainplay");
 const footer = document.getElementById("footer");
 const mainPlayBtn = document.getElementById("playbtn");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".close-modal");
+const btnReplay = document.querySelector(".toReplay");
+const modalMsg = document.querySelector(".modal-msg");
 
 coinsTxt.textContent = startingCoins;
 achievementTxt.textContent = `${player.complete} / ${
 	gameLvl[player.currentlvl].pairs
 }`;
-
-replayBtn.addEventListener("click", player.replay);
 
 const flipping = new Audio("audio/flipping.wav");
 const wrongAns = new Audio("audio/wronganswerbuzz.wav");
@@ -211,10 +215,11 @@ const timesup = new Audio("audio/timesup.mp3");
 const timercd = new Audio("audio/timerclock10s.wav");
 const bonus = new Audio("audio/prize.wav");
 const victory = new Audio("audio/victory.mp3");
+const alert = new Audio("audio/alert.mp3");
 const bkgmusic = new Audio(
 	"https://raw.githubusercontent.com/siangyin/MemoryGame/master/audio/backgroundmusic1.mp3"
 );
-bkgmusic.volume = 0.25;
+bkgmusic.volume = 0.23;
 
 const timerInt = () => {
 	gameInterval = setInterval(timeCount, 1000);
@@ -279,13 +284,13 @@ function startPlay() {
 	getPlayerName();
 	if (player.sound) {
 		bkgmusic.play();
-		landingPage.remove();
-		playingSection.style.display = "flexbox";
-		footer.style.visibility = "visible";
-		addCards(gameLvl[player.currentlvl].cards);
-		timerInt();
-		startGameTime = new Date().getTime();
 	}
+	landingPage.remove();
+	playingSection.style.display = "flexbox";
+	footer.style.visibility = "visible";
+	addCards(gameLvl[player.currentlvl].cards);
+	timerInt();
+	startGameTime = new Date().getTime();
 }
 
 /*** >> Function to get player name input ***/
@@ -321,6 +326,11 @@ function timeCount() {
 		}
 
 		gameLog("Game Over");
+		let h1 = document.createElement("h1");
+		h1.textContent = "GAME OVER";
+		showModal();
+		modalMsg.remove();
+		btnCloseModal.after(h1);
 	}
 	timeTxt.textContent = timeFormater(time);
 }
@@ -401,6 +411,13 @@ function gameLog(text) {
 	gameLogUl.appendChild(li);
 }
 
+/*>>-f->>  Function: show modal ***/
+function showModal() {
+	console.log("show modal");
+	modal.classList.remove("hidden");
+	overlay.classList.remove("hidden");
+}
+
 /*** DOM events ***/
 
 cardbox.addEventListener("click", (e) => {
@@ -437,4 +454,30 @@ soundBtn.addEventListener("click", (e) => {
 		e.target.textContent = "🔔 Music on";
 		bkgmusic.play();
 	}
+});
+
+btnCloseModal.addEventListener("click", function () {
+	modal.setAttribute("class", "hidden");
+	overlay.setAttribute("class", "hidden");
+});
+
+btnReplay.addEventListener("click", function () {
+	if (player.sound) {
+		alert.play();
+	}
+	modal.setAttribute("class", "hidden");
+	overlay.setAttribute("class", "hidden");
+
+	player.replay();
+	removeAllChilds(gameLogUl);
+	gameLog(`Game is restart`);
+});
+
+replayBtn.addEventListener("click", function () {
+	if (player.sound) {
+		alert.play();
+	}
+	player.replay();
+	removeAllChilds(gameLogUl);
+	gameLog(`Game is restart`);
 });

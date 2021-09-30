@@ -17,6 +17,8 @@ body {
 	text-align: center;
 }
 
+/* landing page */
+
 #landinglayer {
 	height: 100vh;
 	position: relative;
@@ -90,6 +92,8 @@ section#mainplay {
 	display: flexbox;
 }
 
+/* header */
+
 header {
 	display: inline-flex;
 	width: 95vw;
@@ -118,6 +122,8 @@ h2 {
 	width: 18%;
 }
 
+/* cards */
+
 #cardbox {
 	order: 2;
 	display: inline-flex;
@@ -126,13 +132,26 @@ h2 {
 	padding-top: 5%;
 }
 
-div {
+div.cards {
 	background-color: #fffaa0;
 	height: 100px;
 	width: 100px;
 	margin: 3px;
 	border: 3px solid #fda4e2;
 }
+
+img.hide {
+	max-width: 100%;
+	height: auto;
+	visibility: hidden;
+}
+
+img.cutie {
+	max-width: 100%;
+	height: auto;
+}
+
+/* footer */
 
 footer {
 	flex: 3;
@@ -171,13 +190,68 @@ footer nav:hover {
 	font-size: larger;
 }
 
-img.hide {
-	max-width: 100%;
-	height: auto;
-	visibility: hidden;
+/* modal style */
+
+.hidden {
+	display: none;
 }
 
-img.cutie {
-	max-width: 100%;
-	height: auto;
+.overlay {
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.7);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.modal {
+	margin: 70px auto;
+	padding: 20px;
+	color: rgb(255, 153, 0);
+	border-radius: 10px;
+	justify-content: space-between;
+	background-color: rgb(255, 250, 203);
+	border: 3px solid white;
+	width: 50vw;
+	height: 20vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+span {
+	display: inline-flex;
+	align-items: baseline;
+	font-family: "Fredoka One";
+	font-size: xx-large;
+}
+
+.close-modal {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	transition: all 200ms;
+	font-size: 30px;
+	text-decoration: none;
+	width: 50px;
+}
+
+.btn {
+	background-color: rgba(255, 250, 203, 0.01);
+	color: grey;
+	padding: 5px;
+	height: 50px;
+	border-style: none;
+	font-family: "Acme", sans-serif;
+	font-size: 20px;
+}
+
+.btn:hover {
+	color: #ae45fc;
+	font-weight: bold;
+	font-size: x-large;
 }
