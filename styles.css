@@ -17,15 +17,12 @@ body {
 	text-align: center;
 }
 
-/* testing : from layering on landing page */
-
 #landinglayer {
 	height: 100vh;
 	position: relative;
 	top: 0;
 	left: 0;
 	display: flexbox;
-	/* to be used for hiding landing page after playbtn clicked */
 }
 
 form {
@@ -43,11 +40,6 @@ input {
 
 #playbtn {
 	height: 20vh;
-	/* max-width: 20%; */
-	/* height: auto; */
-	/* margin-left: auto;
-	margin-right: auto; */
-	/* display: block; */
 }
 
 #playbtn:hover {
@@ -105,8 +97,6 @@ header {
 	justify-content: space-evenly;
 	-webkit-flex-direction: column;
 	flex-direction: column;
-	/* float: left; */
-	/* height: 15vh; */
 }
 
 .row1,

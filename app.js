@@ -158,9 +158,9 @@ const gameLvl = {
 	},
 	5: {
 		level: "Level 5",
-		cards: 16,
-		pairs: 8,
-		time: 80,
+		cards: 12,
+		pairs: 6,
+		time: 50,
 		speed: 700,
 		earning: 20,
 		damages: 10,
@@ -171,7 +171,7 @@ const gameLvl = {
 // -- GLOBAL variables
 let startingCoins = 20;
 let playername = getPlayerName;
-const player = new User("lee");
+const player = new User(playername);
 
 let currLvlCardsArr;
 let cardsImgClicked = [];
@@ -203,10 +203,6 @@ achievementTxt.textContent = `${player.complete} / ${
 }`;
 
 replayBtn.addEventListener("click", player.replay);
-
-document.addEventListener("DOMContentLoaded", function () {
-	// commented out for landing page layering -> startPlay();
-});
 
 const flipping = new Audio("audio/flipping.wav");
 const wrongAns = new Audio("audio/wronganswerbuzz.wav");
@@ -342,7 +338,6 @@ function removeAllChilds(parent) {
 function check2Cards() {
 	let firstCardID = document.getElementById(cardsImgClicked[0]["divId"]);
 	let secondCardID = document.getElementById(cardsImgClicked[1]["divId"]);
-	//
 
 	if (cardsImgClicked.length === 2) {
 		let is2SameCards = cardsImgClicked[0]["img"] === cardsImgClicked[1]["img"];
@@ -436,12 +431,10 @@ soundBtn.addEventListener("click", (e) => {
 	if (e.target.textContent === "🔔 Music on") {
 		player.sound = false;
 		e.target.textContent = "🔕 Music off";
-		// document.getElementById("bkgmusic").muted = true;
 		bkgmusic.pause();
 	} else {
 		player.sound = true;
 		e.target.textContent = "🔔 Music on";
 		bkgmusic.play();
-		// document.getElementById("bkgmusic").muted = false;
 	}
 });
