@@ -149,7 +149,7 @@ footer {
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	width: 100vw;
+	width: 95vw;
 	height: 20vh;
 	justify-content: center;
 	display: inline-flex;
@@ -190,8 +190,4 @@ img.hide {
 img.cutie {
 	max-width: 100%;
 	height: auto;
-}
-
-audio {
-	display: none;
 }
