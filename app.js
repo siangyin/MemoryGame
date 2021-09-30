@@ -90,6 +90,8 @@ class User {
 
 		if (this.currentlvl === Object.keys(gameLvl).length) {
 			if (player.sound) {
+				stop(timesup);
+				stop(timercd);
 				victory.play();
 			}
 			gameLog(`Well Done ${playername}, you have completed all levels`);
