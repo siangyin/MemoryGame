@@ -130,6 +130,7 @@ h2 {
 	flex-wrap: wrap;
 	justify-content: center;
 	padding-top: 5%;
+	width: 70vw;
 }
 
 div.cards {
@@ -207,17 +208,15 @@ footer nav:hover {
 }
 
 .modal {
-	margin: 70px auto;
+	margin: 20% auto;
 	padding: 20px;
-	color: rgb(255, 153, 0);
+	color: white;
 	border-radius: 10px;
-	justify-content: space-between;
-	background-color: rgb(255, 250, 203);
+	background-color: #ae45fc;
 	border: 3px solid white;
-	width: 50vw;
-	height: 20vh;
+	width: 50%;
 	position: absolute;
-	top: 50%;
+	top: 20%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
@@ -232,8 +231,8 @@ span {
 
 .close-modal {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 10px;
+	right: 10px;
 	transition: all 200ms;
 	font-size: 30px;
 	text-decoration: none;
@@ -241,8 +240,8 @@ span {
 }
 
 .btn {
-	background-color: rgba(255, 250, 203, 0.01);
-	color: grey;
+	background-color: #ae45fc;
+	color: whitesmoke;
 	padding: 5px;
 	height: 50px;
 	border-style: none;
@@ -251,7 +250,7 @@ span {
 }
 
 .btn:hover {
-	color: #ae45fc;
+	color: #fcf345;
 	font-weight: bold;
-	font-size: x-large;
+	font-size: xx-large;
 }
