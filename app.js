@@ -92,7 +92,7 @@ class User {
 			if (player.sound) {
 				victory.play();
 			}
-			gameLog("Well Done, you have completed all levels");
+			gameLog(`Well Done ${playername}, you have completed all levels`);
 			this.reset();
 		} else {
 			this.currentlvl++;
