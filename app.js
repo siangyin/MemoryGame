@@ -272,7 +272,8 @@ function addCards(num) {
 		cardbox.appendChild(newDiv).setAttribute("id", i);
 
 		let docId = document.getElementById(i);
-		docId.className = "cards";
+		// docId.className = "cards";
+		docId.setAttribute("class", "cards buzz-out-on-hover");
 
 		image.src = "images/cards/cards" + currLvlCardsArr[i] + ".jpeg";
 		image.setAttribute("img", currLvlCardsArr[i]);
