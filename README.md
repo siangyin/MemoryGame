@@ -68,8 +68,12 @@ https://siangyin.github.io/MemoryGame/index.html
 
 6. Success message at the end when all levels are cleared.
 <table><tr><td>
- <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/completegame.png"/>
-</td></tr></table>
+ <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/gameover.png"/>
+</td>
+ <td>
+ <img src="https://github.com/siangyin/MemoryGame/blob/main/images/visualinterface/completedLevel5.png"/>
+</td>
+ </tr></table>
 
 
 
