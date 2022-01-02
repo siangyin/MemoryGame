@@ -1,4 +1,4 @@
-# Project 1 : Mermory Games 
+# Project 1 : Memory Games 
 
 
 ## Game Instructions
